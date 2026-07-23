@@ -10,7 +10,7 @@
 <helmet>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700;12..96,800&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700;12..96,800&family=Instrument+Sans:wght@400;500;600&family=Atkinson+Hyperlegible:wght@400;700&family=Lora:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha384-sHL9NAb7lN7rfvG5lfHpm643Xkcjzp4jFvuavGOndn6pjVqS6ny56CAt3nsEVT4H" crossorigin="anonymous">
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha384-cxOPjt7s7Iz04uaHJceBmS+qpjv2JkIHNVcuOrM+YHwZOmJGBXI00mdUXEq65HTH" crossorigin="anonymous"></script>
 <style>
@@ -31,13 +31,13 @@
   @media (max-width:640px){ .l2m-nl-label{display:none} .l2m-nl-btn{padding-left:0!important;padding-right:0!important;width:38px;justify-content:center} }
 </style>
 </helmet>
-<div style="--bg:{{ c.bg }};--surface:{{ c.surface }};--surface2:{{ c.surface2 }};--ink:{{ c.ink }};--soft:{{ c.soft }};--line:{{ c.line }};--primary:{{ c.primary }};--primarySoft:{{ c.primarySoft }};--violet:{{ c.violet }};--violetSoft:{{ c.violetSoft }};--teal:{{ c.teal }};--gold:{{ c.gold }};min-height:100vh;background:radial-gradient(1200px 720px at 12% -8%,color-mix(in srgb,var(--primary) 16%,transparent),transparent 60%),radial-gradient(1000px 640px at 108% 4%,color-mix(in srgb,var(--violet) 13%,transparent),transparent 62%),var(--bg);background-attachment:fixed;color:var(--ink);font-family:'Instrument Sans',system-ui,sans-serif;font-size:15px;line-height:1.5;transition:background .35s ease,color .35s ease">
+<div style="--bg:{{ c.bg }};--surface:{{ c.surface }};--surface2:{{ c.surface2 }};--ink:{{ c.ink }};--soft:{{ c.soft }};--line:{{ c.line }};--primary:{{ c.primary }};--primarySoft:{{ c.primarySoft }};--violet:{{ c.violet }};--violetSoft:{{ c.violetSoft }};--teal:{{ c.teal }};--gold:{{ c.gold }};--font-head:{{ fontHead }};--font-body:{{ fontBody }};min-height:100vh;background:radial-gradient(1200px 720px at 12% -8%,color-mix(in srgb,var(--primary) 16%,transparent),transparent 60%),radial-gradient(1000px 640px at 108% 4%,color-mix(in srgb,var(--violet) 13%,transparent),transparent 62%),var(--bg);background-attachment:fixed;color:var(--ink);font-family:var(--font-body);font-size:15px;line-height:1.5;zoom:{{ uiZoom }};transition:background .35s ease,color .35s ease">
 
 <sc-if value="{{ isApp }}" hint-placeholder-val="{{ false }}">
 <div>
   <header style="position:sticky;top:0;z-index:30;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)">
     <div style="max-width:1180px;margin:0 auto;padding:13px clamp(16px,4vw,40px);display:flex;align-items:center;gap:16px;flex-wrap:wrap">
-      <button onClick="{{ goDash }}" style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:23px;letter-spacing:-.02em;color:var(--ink);line-height:1;display:flex;align-items:baseline">List<span style="color:var(--primary)">2</span>Me</button>
+      <button onClick="{{ goDash }}" style="font-family:var(--font-head);font-weight:800;font-size:23px;letter-spacing:-.02em;color:var(--ink);line-height:1;display:flex;align-items:baseline">List<span style="color:var(--primary)">2</span>Me</button>
       <sc-if value="{{ deskNav }}" hint-placeholder-val="{{ true }}">
       <nav style="display:flex;gap:3px;flex-wrap:wrap;flex:1 1 auto">
         <sc-for list="{{ navTree }}" as="n" hint-placeholder-count="5">
@@ -67,23 +67,27 @@
         <button onClick="{{ toggleNotif }}" title="Notifiche" style="position:relative;width:38px;height:38px;border-radius:50%;border:1px solid var(--line);background:var(--surface);color:var(--ink);display:flex;align-items:center;justify-content:center" style-hover="background:var(--surface2)">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="17" height="17"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
           <sc-if value="{{ notifBadge }}" hint-placeholder-val="{{ true }}">
-            <span style="position:absolute;top:-4px;right:-4px;min-width:18px;height:18px;padding:0 4px;border-radius:9px;background:var(--primary);color:#fff;font-size:10.5px;font-weight:700;display:flex;align-items:center;justify-content:center;border:2px solid var(--bg);font-family:'Bricolage Grotesque',sans-serif">{{ notifBadgeText }}</span>
+            <span style="position:absolute;top:-4px;right:-4px;min-width:18px;height:18px;padding:0 4px;border-radius:9px;background:var(--primary);color:#fff;font-size:10.5px;font-weight:700;display:flex;align-items:center;justify-content:center;border:2px solid var(--bg);font-family:var(--font-head)">{{ notifBadgeText }}</span>
           </sc-if>
         </button>
         <button onClick="{{ toggleTheme }}" title="Tema" style="width:38px;height:38px;border-radius:50%;border:1px solid var(--line);background:var(--surface);color:var(--ink);font-size:16px;display:flex;align-items:center;justify-content:center">{{ themeIcon }}</button>
         <div style="position:relative">
-          <button onClick="{{ toggleAccountMenu }}" title="Account" style="width:38px;height:38px;border-radius:50%;background:var(--primary);color:#fff;font-weight:700;font-size:14px;font-family:'Bricolage Grotesque',sans-serif">{{ me.init }}</button>
+          <button onClick="{{ toggleAccountMenu }}" title="Account" style="width:38px;height:38px;border-radius:50%;background:var(--primary);color:#fff;font-weight:700;font-size:14px;font-family:var(--font-head)">{{ me.init }}</button>
           <sc-if value="{{ accountMenuOpen }}" hint-placeholder-val="{{ false }}">
             <div onClick="{{ closeAccountMenu }}" style="position:fixed;inset:0;z-index:70"></div>
             <div style="position:absolute;top:48px;right:0;z-index:71;width:230px;background:var(--surface);border:1px solid var(--line);border-radius:14px;box-shadow:0 16px 40px -12px rgba(0,0,0,.4);overflow:hidden;animation:l2mFade .16s ease both">
               <div style="display:flex;align-items:center;gap:11px;padding:14px 15px;border-bottom:1px solid var(--line)">
-                <span style="width:38px;height:38px;border-radius:50%;flex-shrink:0;background:var(--primary);color:#fff;font-weight:700;font-size:14px;display:flex;align-items:center;justify-content:center;font-family:'Bricolage Grotesque',sans-serif">{{ me.init }}</span>
+                <span style="width:38px;height:38px;border-radius:50%;flex-shrink:0;background:var(--primary);color:#fff;font-weight:700;font-size:14px;display:flex;align-items:center;justify-content:center;font-family:var(--font-head)">{{ me.init }}</span>
                 <span style="min-width:0"><span style="display:block;font-weight:700;font-size:14px;color:var(--ink);overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ me.name }}</span><span style="display:block;font-size:12.5px;color:var(--soft);overflow:hidden;text-overflow:ellipsis;white-space:nowrap">@{{ me.user }}</span></span>
               </div>
               <div style="padding:6px">
                 <button onClick="{{ menuGoProfile }}" style="width:100%;display:flex;align-items:center;gap:11px;padding:10px 11px;border-radius:9px;color:var(--ink);font-weight:600;font-size:14px;text-align:left" style-hover="background:var(--surface2)">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="17" height="17"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
                   Il mio profilo
+                </button>
+                <button onClick="{{ menuGoSettings }}" style="width:100%;display:flex;align-items:center;gap:11px;padding:10px 11px;border-radius:9px;color:var(--ink);font-weight:600;font-size:14px;text-align:left" style-hover="background:var(--surface2)">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="17" height="17"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+                  Impostazioni
                 </button>
                 <button onClick="{{ menuLogout }}" style="width:100%;display:flex;align-items:center;gap:11px;padding:10px 11px;border-radius:9px;color:var(--primary);font-weight:600;font-size:14px;text-align:left" style-hover="background:var(--primarySoft)">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="17" height="17"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
@@ -128,15 +132,14 @@
       <div style="display:flex;flex-wrap:wrap;gap:14px;justify-content:space-between;align-items:flex-start">
         <div>
           <p style="margin:0;color:var(--soft);font-weight:600;font-size:14px;letter-spacing:.02em;text-transform:uppercase">{{ greetLabel }}</p>
-          <h1 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:clamp(28px,4.5vw,42px);letter-spacing:-.02em;margin:6px 0 4px">{{ greeting }}</h1>
+          <h1 style="font-family:var(--font-head);font-weight:800;font-size:clamp(28px,4.5vw,42px);letter-spacing:-.02em;margin:6px 0 4px">{{ greeting }}</h1>
         </div>
-        <button onClick="{{ createList }}" style="background:var(--primary);color:#fff;font-weight:600;font-size:15px;padding:11px 20px;border-radius:12px;box-shadow:0 6px 18px -8px var(--primary);flex-shrink:0">+ Nuova lista</button>
       </div>
       <p style="margin:0 0 26px;color:var(--soft);font-size:16px;max-width:560px">Ecco cosa succede nella tua rete. Hai <button onClick="{{ goInvites }}" style="background:none;padding:0;font-size:inherit;font-weight:700;color:var(--primary);text-decoration:underline;text-underline-offset:2px">{{ overview.invites }} inviti</button> da valutare, <button onClick="{{ goSuggestions }}" style="background:none;padding:0;font-size:inherit;font-weight:700;color:var(--gold);text-decoration:underline;text-underline-offset:2px">{{ overview.changes }} modifiche suggerite</button> e <button onClick="{{ goSuggestedLists }}" style="background:none;padding:0;font-size:inherit;font-weight:700;color:var(--violet);text-decoration:underline;text-underline-offset:2px">{{ overview.suggestedLists }} liste suggerite</button>.</p>
 
       <section style="margin-bottom:28px">
         <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:12px">
-          <h2 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:20px;margin:0">Consigliate per te</h2>
+          <h2 style="font-family:var(--font-head);font-weight:700;font-size:20px;margin:0">Consigliate per te</h2>
           <button onClick="{{ goExplore }}" style="font-weight:600;font-size:14px;color:var(--primary)">Esplora →</button>
         </div>
         <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:16px">
@@ -149,14 +152,14 @@
       <div style="display:flex;flex-wrap:wrap;gap:22px;align-items:flex-start">
         <section style="flex:3 1 380px;min-width:0">
           <div style="display:flex;align-items:baseline;justify-content:space-between;margin-bottom:12px">
-            <h2 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:20px;margin:0">Feed attività</h2>
+            <h2 style="font-family:var(--font-head);font-weight:700;font-size:20px;margin:0">Feed attività</h2>
             <span style="color:var(--soft);font-size:13.5px">La tua rete · aggiornato ora</span>
           </div>
           <div style="display:flex;flex-direction:column;gap:10px">
             <sc-for list="{{ feed }}" as="f" hint-placeholder-count="5">
               <div onClick="{{ f.go }}" style="background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:15px 16px;display:flex;gap:13px;cursor:{{ f.cursor }};transition:transform .15s,border-color .15s" style-hover="border-color:var(--primary);transform:translateY(-1px)">
                 <div style="position:relative;flex-shrink:0;width:40px;height:40px">
-                  <div style="width:40px;height:40px;border-radius:50%;background:{{ f.avBg }};color:{{ f.avFg }};display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;font-family:'Bricolage Grotesque',sans-serif">{{ f.init }}</div>
+                  <div style="width:40px;height:40px;border-radius:50%;background:{{ f.avBg }};color:{{ f.avFg }};display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;font-family:var(--font-head)">{{ f.init }}</div>
                   <span title="Tipo di attività" style="position:absolute;right:-3px;bottom:-3px;width:21px;height:21px;border-radius:50%;background:{{ f.c }};color:#fff;border:2px solid var(--surface);display:flex;align-items:center;justify-content:center">{{ f.icon }}</span>
                 </div>
                 <div style="min-width:0;flex:1">
@@ -172,18 +175,18 @@
 
         <aside style="flex:1 1 260px;display:flex;flex-direction:column;gap:16px">
           <div style="background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:18px">
-            <h2 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:17px;margin:0 0 14px">Panoramica</h2>
+            <h2 style="font-family:var(--font-head);font-weight:700;font-size:17px;margin:0 0 14px">Panoramica</h2>
             <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px">
               <sc-for list="{{ stats }}" as="s" hint-placeholder-count="3">
                 <button onClick="{{ s.go }}" title="{{ s.title }}" style="background:var(--surface2);border-radius:13px;padding:12px 8px;text-align:center;cursor:pointer;transition:background .15s,transform .1s" style-hover="background:var(--primarySoft);transform:translateY(-1px)">
-                  <div style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:24px;color:{{ s.c }};line-height:1">{{ s.n }}</div>
+                  <div style="font-family:var(--font-head);font-weight:800;font-size:24px;color:{{ s.c }};line-height:1">{{ s.n }}</div>
                   <div style="color:var(--soft);font-size:12px;margin-top:4px">{{ s.label }}</div>
                 </button>
               </sc-for>
             </div>
           </div>
           <div style="background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:18px">
-            <h2 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:17px;margin:0 0 12px">Liste recenti</h2>
+            <h2 style="font-family:var(--font-head);font-weight:700;font-size:17px;margin:0 0 12px">Liste recenti</h2>
             <div style="display:flex;flex-direction:column;gap:4px">
               <sc-for list="{{ recent }}" as="r" hint-placeholder-count="4">
                 <button onClick="{{ r.go }}" style="display:flex;align-items:center;gap:11px;padding:9px 8px;border-radius:11px;text-align:left;width:100%;transition:background .15s" style-hover="background:var(--surface2)">
@@ -202,7 +205,7 @@
     <!-- ESPLORA -->
     <sc-if value="{{ isExplore }}" hint-placeholder-val="{{ false }}">
     <div style="animation:l2mRise .4s ease both">
-      <h1 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:clamp(26px,4vw,38px);letter-spacing:-.02em;margin:0 0 6px">Esplora</h1>
+      <h1 style="font-family:var(--font-head);font-weight:800;font-size:clamp(26px,4vw,38px);letter-spacing:-.02em;margin:0 0 6px">Esplora</h1>
       <p style="margin:0 0 20px;color:var(--soft)">Liste che potrebbero piacerti, scelte in base ai tuoi interessi e alla tua rete.</p>
 
       <div style="position:relative;margin-bottom:14px">
@@ -235,7 +238,7 @@
       </div>
       <sc-if value="{{ exploreEmpty }}" hint-placeholder-val="{{ false }}">
         <div style="text-align:center;padding:60px 20px;color:var(--soft)">
-          <p style="font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:18px;color:var(--ink);margin:0 0 6px">Nessuna lista trovata</p>
+          <p style="font-family:var(--font-head);font-weight:700;font-size:18px;color:var(--ink);margin:0 0 6px">Nessuna lista trovata</p>
           <p style="margin:0 0 16px;font-size:14.5px">Prova a modificare la ricerca o a rimuovere qualche filtro.</p>
           <button onClick="{{ clearExploreFilters }}" style="font-weight:600;font-size:14px;padding:10px 20px;border-radius:12px;background:var(--surface);border:1px solid var(--line);color:var(--ink)">Azzera filtri</button>
         </div>
@@ -253,10 +256,9 @@
     <div style="animation:l2mRise .4s ease both">
       <div style="display:flex;flex-wrap:wrap;gap:16px;align-items:flex-end;justify-content:space-between;margin-bottom:20px">
         <div>
-          <h1 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:clamp(26px,4vw,38px);letter-spacing:-.02em;margin:0">Le mie liste</h1>
+          <h1 style="font-family:var(--font-head);font-weight:800;font-size:clamp(26px,4vw,38px);letter-spacing:-.02em;margin:0">Le mie liste</h1>
           <p style="margin:6px 0 0;color:var(--soft)">Tutto ciò a cui hai accesso, in un posto solo.</p>
         </div>
-        <button onClick="{{ createList }}" style="background:var(--primary);color:#fff;font-weight:600;font-size:15px;padding:11px 20px;border-radius:12px;box-shadow:0 6px 18px -8px var(--primary)">+ Nuova lista</button>
       </div>
       <div style="display:inline-flex;gap:4px;background:var(--surface2);border:1px solid var(--line);border-radius:12px;padding:4px;margin-bottom:16px">
         <button onClick="{{ setListsGrid }}" title="Vista a griglia" style="display:flex;align-items:center;gap:7px;padding:8px 15px;border-radius:9px;font-weight:600;font-size:13.5px;background:{{ mapTog.gridBg }};color:{{ mapTog.gridFg }};box-shadow:{{ mapTog.gridSh }};transition:all .15s"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/></svg>Griglia</button>
@@ -279,7 +281,7 @@
         <section style="margin-bottom:22px;padding:20px 20px 22px;border-radius:18px;background:color-mix(in srgb,{{ b.c }} 6%,var(--bg));border:1px solid color-mix(in srgb,{{ b.c }} 16%,var(--line))">
           <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px">
             <span style="width:10px;height:10px;border-radius:3px;background:{{ b.c }}"></span>
-            <h2 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:19px;margin:0">{{ b.label }}</h2>
+            <h2 style="font-family:var(--font-head);font-weight:700;font-size:19px;margin:0">{{ b.label }}</h2>
             <span style="color:var(--soft);font-size:14px">{{ b.count }}</span>
           </div>
           <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(285px,1fr));gap:16px">
@@ -295,7 +297,7 @@
       <section style="margin-bottom:22px;border-radius:18px;padding:20px 20px 22px;background:color-mix(in srgb,var(--soft) 6%,var(--bg));border:1px solid color-mix(in srgb,var(--soft) 16%,var(--line))">
         <button onClick="{{ toggleShowArchived }}" style="display:flex;align-items:center;gap:10px;width:100%;text-align:left">
           <span style="width:10px;height:10px;border-radius:3px;background:var(--soft)"></span>
-          <h2 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:19px;margin:0;color:var(--ink)">{{ archToggleLabel }}</h2>
+          <h2 style="font-family:var(--font-head);font-weight:700;font-size:19px;margin:0;color:var(--ink)">{{ archToggleLabel }}</h2>
           <span style="color:var(--soft);font-size:14px">{{ archivedCount }}</span>
         </button>
         <sc-if value="{{ showArchived }}" hint-placeholder-val="{{ false }}">
@@ -327,7 +329,7 @@
           <section style="margin-bottom:18px">
             <div style="display:flex;align-items:center;gap:10px;margin-bottom:11px">
               <span style="width:10px;height:10px;border-radius:3px;background:{{ b.c }}"></span>
-              <h2 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:19px;margin:0">{{ b.label }}</h2>
+              <h2 style="font-family:var(--font-head);font-weight:700;font-size:19px;margin:0">{{ b.label }}</h2>
               <span style="color:var(--soft);font-size:14px">{{ b.count }}</span>
             </div>
             <div style="background:var(--surface);border:1px solid var(--line);border-radius:14px;overflow:hidden">
@@ -335,7 +337,7 @@
                 <div style="display:flex;align-items:center;gap:11px;padding:10px 14px;border-top:1px solid var(--line)" style-hover="background:var(--surface2)">
                   <button onClick="{{ l.toggleFav }}" title="{{ l.favTitle }}" style="flex-shrink:0;display:flex;color:{{ l.favColor }}"><svg viewBox="0 0 24 24" fill="{{ l.favFill }}" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></button>
                   <span style="width:4px;height:24px;border-radius:3px;background:{{ l.accent }};flex-shrink:0"></span>
-                  <button onClick="{{ l.go }}" title="Apri la lista" style="flex:1 1 auto;min-width:0;text-align:left;padding:0;background:none;font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:15px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" style-hover="color:var(--primary)">{{ l.title }}</button>
+                  <button onClick="{{ l.go }}" title="Apri la lista" style="flex:1 1 auto;min-width:0;text-align:left;padding:0;background:none;font-family:var(--font-head);font-weight:700;font-size:15px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" style-hover="color:var(--primary)">{{ l.title }}</button>
                   <span style="flex-shrink:0;font-size:12px;font-weight:600;color:{{ l.visFg }};background:{{ l.visBg }};padding:2px 9px;border-radius:999px">{{ l.visLabel }}</span>
                   <button onClick="{{ l.openOwner }}" title="{{ l.ownerTitle }}" style="flex-shrink:0;display:flex;align-items:center;gap:7px;background:none;padding:0" style-hover="color:var(--primary)">
                     <span style="width:22px;height:22px;border-radius:50%;background:var(--primarySoft);color:var(--primary);font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center">{{ l.ownerInit }}</span>
@@ -415,7 +417,7 @@
           <x-import component-from-global-scope="ListMap" from="./ListMap.js" items="{{ mapFilteredItems }}" on-open-list="{{ openMapList }}" theme="{{ theme }}" hint-size="100%,100%"></x-import>
           <sc-if value="{{ mapEmpty }}" hint-placeholder-val="{{ false }}">
           <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;background:color-mix(in srgb,var(--surface) 82%,transparent);z-index:500;padding:24px">
-            <div style="font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:18px;color:var(--ink);margin-bottom:6px">Nessun elemento sulla mappa</div>
+            <div style="font-family:var(--font-head);font-weight:700;font-size:18px;color:var(--ink);margin-bottom:6px">Nessun elemento sulla mappa</div>
             <p style="margin:0;max-width:420px;color:var(--soft);font-size:14px">Nessun elemento con un luogo corrisponde ai filtri attivi. Prova ad allargarli o ad azzerarli.</p>
           </div>
           </sc-if>
@@ -423,7 +425,7 @@
 
         <div style="margin-top:22px">
           <div style="display:flex;align-items:center;gap:10px;margin-bottom:13px">
-            <h2 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:19px;margin:0">Elementi sulla mappa</h2>
+            <h2 style="font-family:var(--font-head);font-weight:700;font-size:19px;margin:0">Elementi sulla mappa</h2>
             <span style="color:var(--soft);font-size:14px">{{ mapCountLabel }}</span>
           </div>
           <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:12px">
@@ -434,7 +436,7 @@
                   <span style="font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:{{ p.kindColor }}">{{ p.kindOne }}</span>
                   <span style="margin-left:auto;font-size:11px;font-weight:700;letter-spacing:.03em;text-transform:uppercase;padding:3px 9px;border-radius:999px;background:var(--surface2);color:{{ p.tc }}">{{ p.typeLabel }}</span>
                 </div>
-                <div style="font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:16px;line-height:1.25;color:var(--ink)">{{ p.text }}</div>
+                <div style="font-family:var(--font-head);font-weight:700;font-size:16px;line-height:1.25;color:var(--ink)">{{ p.text }}</div>
                 <sc-if value="{{ p.hasDetail }}" hint-placeholder-val="{{ true }}"><div style="color:var(--soft);font-size:13.5px">{{ p.detail }}</div></sc-if>
                 <div style="display:flex;flex-wrap:wrap;gap:12px;font-size:12.5px;color:var(--soft)">
                   <sc-if value="{{ p.hasPlace }}" hint-placeholder-val="{{ true }}"><span style="display:inline-flex;align-items:center;gap:5px"><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>{{ p.place }}</span></sc-if>
@@ -455,7 +457,7 @@
     <div style="animation:l2mRise .4s ease both">
       <div style="display:flex;flex-wrap:wrap;gap:16px;align-items:flex-end;justify-content:space-between;margin-bottom:8px">
         <div>
-          <h1 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:clamp(26px,4vw,38px);letter-spacing:-.02em;margin:0">I miei tag</h1>
+          <h1 style="font-family:var(--font-head);font-weight:800;font-size:clamp(26px,4vw,38px);letter-spacing:-.02em;margin:0">I miei tag</h1>
           <p style="margin:6px 0 0;color:var(--soft)">Tutti i tag che usi nelle tue liste. Tocca un tag per filtrare Le mie liste.</p>
         </div>
         <span style="font-size:14px;color:var(--soft);background:var(--surface2);padding:7px 14px;border-radius:999px;font-weight:600">{{ myTagsCountLabel }}</span>
@@ -470,11 +472,11 @@
         <sc-for list="{{ myTags }}" as="t" hint-placeholder-count="8">
           <div style="background:var(--surface);border:1px solid {{ t.cardBd }};border-radius:16px;padding:16px;display:flex;flex-direction:column;transition:transform .16s,border-color .16s,box-shadow .16s" style-hover="transform:translateY(-3px);border-color:var(--primary);box-shadow:0 14px 30px -18px rgba(0,0,0,.4)">
             <div style="display:flex;align-items:center;gap:9px;margin-bottom:13px">
-              <span style="width:34px;height:34px;border-radius:10px;background:var(--primarySoft);color:var(--primary);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:18px;font-family:'Bricolage Grotesque',sans-serif;flex-shrink:0">#</span>
+              <span style="width:34px;height:34px;border-radius:10px;background:var(--primarySoft);color:var(--primary);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:18px;font-family:var(--font-head);flex-shrink:0">#</span>
               <sc-if value="{{ t.isFav }}" hint-placeholder-val="{{ false }}"><span style="font-size:10.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--gold);background:color-mix(in srgb,var(--gold) 15%,transparent);padding:3px 8px;border-radius:999px">Preferito</span></sc-if>
               <button onClick="{{ t.toggleFav }}" title="{{ t.favTitle }}" style="margin-left:auto;width:32px;height:32px;border-radius:9px;display:flex;align-items:center;justify-content:center;color:{{ t.favColor }};background:var(--surface2);flex-shrink:0" style-hover="background:var(--gold);color:#fff"><svg viewBox="0 0 24 24" fill="{{ t.favFill }}" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="15" height="15"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4.5L5 21V4a1 1 0 0 1 1-1z"/></svg></button>
             </div>
-            <button onClick="{{ t.go }}" style="text-align:left;padding:0;background:none;font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:19px;letter-spacing:-.01em;color:var(--ink);overflow:hidden;text-overflow:ellipsis;white-space:nowrap" style-hover="color:var(--primary)">{{ t.tag }}</button>
+            <button onClick="{{ t.go }}" style="text-align:left;padding:0;background:none;font-family:var(--font-head);font-weight:700;font-size:19px;letter-spacing:-.01em;color:var(--ink);overflow:hidden;text-overflow:ellipsis;white-space:nowrap" style-hover="color:var(--primary)">{{ t.tag }}</button>
             <button onClick="{{ t.go }}" title="Vedi Le mie liste con #{{ t.tag }}" style="text-align:left;padding:0;background:none;margin-top:5px;display:inline-flex;align-items:center;gap:6px;color:var(--soft);font-size:13.5px;font-weight:600" style-hover="color:var(--primary)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="13" height="13"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>{{ t.countLabel }}</button>
           </div>
         </sc-for>
@@ -497,12 +499,17 @@
           <span style="position:absolute;top:10px;right:10px;display:inline-flex;align-items:center;gap:6px;font-size:12.5px;font-weight:600;color:var(--ink);background:var(--surface);border:1px solid var(--line);padding:6px 11px;border-radius:9px;box-shadow:0 4px 14px -6px rgba(0,0,0,.4)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>Modifica copertina</span>
           </sc-if>
         </div>
-        <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px">
+        <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:12px">
+          <sc-if value="{{ active.editVis }}" hint-placeholder-val="{{ false }}">
+          <label style="display:inline-flex;align-items:center;gap:7px;font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;padding:4px 6px 4px 12px;border-radius:999px;background:{{ active.visBg }};color:{{ active.visFg }}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="13" height="13"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7Z"/><circle cx="12" cy="12" r="3"/></svg>Visibilità<select value="{{ active.visValue }}" onChange="{{ active.setVisibility }}" title="Cambia la visibilità della lista" style="font:inherit;font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:{{ active.visFg }};background:var(--surface);border:1px solid {{ active.visFg }};border-radius:999px;padding:4px 9px;cursor:pointer;outline:none"><sc-for list="{{ active.visOpts }}" as="o" hint-placeholder-count="3"><option value="{{ o.key }}">{{ o.label }}</option></sc-for></select></label>
+          </sc-if>
+          <sc-if value="{{ active.readVis }}" hint-placeholder-val="{{ true }}">
           <span style="font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;padding:5px 11px;border-radius:999px;background:{{ active.visBg }};color:{{ active.visFg }}">{{ active.visLabel }}</span>
+          </sc-if>
           <span style="font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;padding:5px 11px;border-radius:999px;background:var(--surface2);color:var(--soft)">v{{ active.version }}</span>
           <sc-if value="{{ active.isFork }}" hint-placeholder-val="{{ false }}"><span style="font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;padding:5px 11px;border-radius:999px;background:var(--violetSoft);color:var(--violet)">⑂ fork di {{ active.forkFrom }}</span></sc-if>
         </div>
-        <h1 contentEditable="{{ active.canEdit }}" suppressContentEditableWarning="{{ true }}" onBlur="{{ saveTitle }}" title="{{ titleTitle }}" style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:clamp(28px,4.5vw,40px);letter-spacing:-.02em;margin:0 0 8px;max-width:760px;outline:none;border-radius:10px;padding:2px 8px;margin-left:-8px;transition:background .15s" style-focus="background:var(--surface2)">{{ active.title }}</h1>
+        <h1 contentEditable="{{ active.canEdit }}" suppressContentEditableWarning="{{ true }}" onBlur="{{ saveTitle }}" title="{{ titleTitle }}" style="font-family:var(--font-head);font-weight:800;font-size:clamp(28px,4.5vw,40px);letter-spacing:-.02em;margin:0 0 8px;max-width:760px;outline:none;border-radius:10px;padding:2px 8px;margin-left:-8px;transition:background .15s" style-focus="background:var(--surface2)">{{ active.title }}</h1>
         <p contentEditable="{{ active.canEdit }}" suppressContentEditableWarning="{{ true }}" onBlur="{{ saveDesc }}" title="{{ descTitle }}" style="margin:0 0 16px;color:var(--soft);font-size:16px;max-width:640px;outline:none;border-radius:8px;padding:2px 6px;margin-left:-6px;transition:background .15s" style-focus="background:var(--surface2)">{{ active.desc }}</p>
         <sc-if value="{{ active.canEdit }}" hint-placeholder-val="{{ false }}">
         <div style="margin-bottom:18px">
@@ -575,7 +582,6 @@
             <button onClick="{{ toggleFollowList }}" style="font-size:14px;font-weight:600;padding:9px 16px;border-radius:10px;background:{{ followBtn.bg }};color:{{ followBtn.fg }};border:1px solid {{ followBtn.bd }}">{{ followBtn.label }}</button>
             <button onClick="{{ forkList }}" style="font-size:14px;font-weight:600;padding:9px 16px;border-radius:10px;background:var(--surface);border:1px solid var(--line);color:var(--ink)">⑂ Fork</button>
             <button onClick="{{ openShare }}" style="font-size:14px;font-weight:600;padding:9px 16px;border-radius:10px;background:var(--primarySoft);border:1px solid var(--primary);color:var(--primary);display:inline-flex;align-items:center;gap:6px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="15" height="15"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.59 13.51l6.83 3.98"/><path d="M15.41 6.51l-6.82 3.98"/></svg>Condividi</button>
-            <button onClick="{{ openSuggest }}" style="font-size:14px;font-weight:600;padding:9px 16px;border-radius:10px;background:var(--surface);border:1px solid var(--line);color:var(--ink)">↗ Suggerisci</button>
             <button onClick="{{ reportList }}" title="Segnala" style="font-size:14px;font-weight:600;padding:9px 14px;border-radius:10px;background:var(--surface);border:1px solid var(--line);color:var(--soft)">⚑</button>
         </div>
       </div>
@@ -630,13 +636,13 @@
               <div style="display:flex;flex-direction:column;align-items:center;gap:2px;padding-top:2px">
                 <span title="Trascina per riordinare" style="color:var(--line);font-size:13px;line-height:1;cursor:grab;letter-spacing:-1px">⠿⠿</span>
                 <button onClick="{{ it.up }}" style="color:var(--soft);font-size:15px;line-height:1;opacity:{{ it.upOp }}">▲</button>
-                <span style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:15px;color:var(--line)">{{ it.pos }}</span>
+                <span style="font-family:var(--font-head);font-weight:800;font-size:15px;color:var(--line)">{{ it.pos }}</span>
                 <button onClick="{{ it.down }}" style="color:var(--soft);font-size:15px;line-height:1;opacity:{{ it.downOp }}">▼</button>
               </div>
               </sc-if>
               <sc-if value="{{ it.viewOnly }}" hint-placeholder-val="{{ true }}">
               <div style="display:flex;flex-direction:column;align-items:center;padding-top:2px">
-                <span style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:15px;color:var(--line)">{{ it.pos }}</span>
+                <span style="font-family:var(--font-head);font-weight:800;font-size:15px;color:var(--line)">{{ it.pos }}</span>
               </div>
               </sc-if>
               <sc-if value="{{ it.hasImg }}" hint-placeholder-val="{{ false }}">
@@ -647,7 +653,7 @@
               <div style="flex:1 1 112px;min-width:112px">
                 <div style="display:flex;align-items:center;gap:9px;flex-wrap:wrap;margin-bottom:5px">
                   <sc-if value="{{ it.done }}" hint-placeholder-val="{{ false }}"><span style="font-size:10.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--teal);background:color-mix(in srgb,var(--teal) 15%,transparent);padding:2px 8px;border-radius:6px">✓ Completato</span></sc-if>
-                  <button onClick="{{ it.peek }}" title="Vedi i dettagli" style="text-align:left;padding:0;background:none;font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:17px;text-decoration:{{ it.titleDeco }};color:{{ it.titleColor }}" style-hover="color:var(--primary)">{{ it.text }}</button>
+                  <button onClick="{{ it.peek }}" title="Vedi i dettagli" style="text-align:left;padding:0;background:none;font-family:var(--font-head);font-weight:700;font-size:17px;text-decoration:{{ it.titleDeco }};color:{{ it.titleColor }}" style-hover="color:var(--primary)">{{ it.text }}</button>
                 </div>
                 <sc-if value="{{ it.detail }}" hint-placeholder-val="{{ false }}"><p style="margin:0;color:var(--ink);font-size:14px">{{ it.detail }}</p></sc-if>
                 <sc-if value="{{ it.meta }}" hint-placeholder-val="{{ false }}"><p style="margin:3px 0 0;color:var(--soft);font-size:13px">{{ it.meta }}</p></sc-if>
@@ -681,7 +687,7 @@
               <button onClick="{{ it.toggleDone }}" title="{{ it.doneTitle }}" style="flex-shrink:0;width:20px;height:20px;border-radius:50%;border:2px solid {{ it.checkBd }};background:{{ it.checkBg }};color:#fff;display:flex;align-items:center;justify-content:center">
                 <sc-if value="{{ it.done }}" hint-placeholder-val="{{ false }}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" width="10" height="10"><polyline points="20 6 9 17 4 12"/></svg></sc-if>
               </button>
-              <span style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:13px;color:var(--line);width:20px;text-align:right;flex-shrink:0">{{ it.pos }}</span>
+              <span style="font-family:var(--font-head);font-weight:800;font-size:13px;color:var(--line);width:20px;text-align:right;flex-shrink:0">{{ it.pos }}</span>
               <span title="{{ it.typeLabel }}" style="display:flex;flex-shrink:0">{{ it.icon }}</span>
               <button onClick="{{ it.peek }}" title="Vedi i dettagli" style="flex:1 1 130px;min-width:120px;text-align:left;padding:0;background:none;font-weight:600;font-size:14.5px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;text-decoration:{{ it.titleDeco }};color:{{ it.titleColor }}" style-hover="color:var(--primary)">{{ it.text }}</button>
               <sc-if value="{{ it.hasWhen }}" hint-placeholder-val="{{ false }}"><span style="flex-shrink:0;font-size:12px;font-weight:600;color:var(--soft);background:var(--surface2);padding:2px 8px;border-radius:999px">{{ it.whenLabel }}</span></sc-if>
@@ -705,7 +711,7 @@
                 </button>
               </div>
               <div style="padding:12px 13px;display:flex;flex-direction:column;flex:1">
-                <button onClick="{{ it.peek }}" title="Vedi i dettagli" style="text-align:left;padding:0;background:none;font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:15.5px;margin:0 0 3px;line-height:1.2;text-decoration:{{ it.titleDeco }};color:{{ it.titleColor }}" style-hover="color:var(--primary)">{{ it.text }}</button>
+                <button onClick="{{ it.peek }}" title="Vedi i dettagli" style="text-align:left;padding:0;background:none;font-family:var(--font-head);font-weight:700;font-size:15.5px;margin:0 0 3px;line-height:1.2;text-decoration:{{ it.titleDeco }};color:{{ it.titleColor }}" style-hover="color:var(--primary)">{{ it.text }}</button>
                 <sc-if value="{{ it.detail }}" hint-placeholder-val="{{ false }}"><p style="margin:0;color:var(--soft);font-size:13px;line-height:1.35">{{ it.detail }}</p></sc-if>
                 <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:10px">
                   <sc-if value="{{ it.hasWhen }}" hint-placeholder-val="{{ false }}"><span style="font-size:11.5px;font-weight:600;color:var(--soft);background:var(--surface2);padding:2px 8px;border-radius:999px">{{ it.whenLabel }}</span></sc-if>
@@ -742,7 +748,7 @@
           </sc-if>
           <sc-if value="{{ geoEmpty }}" hint-placeholder-val="{{ false }}">
           <div style="text-align:center;padding:56px 24px;border:1.5px dashed var(--line);border-radius:18px;color:var(--soft)">
-            <div style="font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:18px;color:var(--ink);margin:0 0 6px">Niente da mostrare sulla mappa</div>
+            <div style="font-family:var(--font-head);font-weight:700;font-size:18px;color:var(--ink);margin:0 0 6px">Niente da mostrare sulla mappa</div>
             <p style="margin:0 auto;max-width:420px;font-size:14.5px">{{ geoEmptyMsg }}</p>
           </div>
           </sc-if>
@@ -765,7 +771,7 @@
                       <div style="font-size:11.5px;font-weight:700;color:var(--soft);text-transform:uppercase;letter-spacing:.04em">{{ t.whenLabel }}</div>
                       <div style="display:flex;align-items:center;gap:9px;flex-wrap:wrap;margin-top:4px">
                         <span title="{{ t.typeLabel }}" style="display:flex;flex-shrink:0">{{ t.icon }}</span>
-                        <h3 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:16px;margin:0;text-decoration:{{ t.titleDeco }};color:{{ t.titleColor }}">{{ t.text }}</h3>
+                        <h3 style="font-family:var(--font-head);font-weight:700;font-size:16px;margin:0;text-decoration:{{ t.titleDeco }};color:{{ t.titleColor }}">{{ t.text }}</h3>
                       </div>
                       <sc-if value="{{ t.hasPlace }}" hint-placeholder-val="{{ false }}"><p style="margin:5px 0 0;color:var(--teal);font-size:13px;font-weight:600">◎ {{ t.placeName }}</p></sc-if>
                     </div>
@@ -778,7 +784,7 @@
           </sc-if>
           <sc-if value="{{ timeEmpty }}" hint-placeholder-val="{{ false }}">
           <div style="text-align:center;padding:56px 24px;border:1.5px dashed var(--line);border-radius:18px;color:var(--soft)">
-            <div style="font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:18px;color:var(--ink);margin:0 0 6px">Timeline vuota</div>
+            <div style="font-family:var(--font-head);font-weight:700;font-size:18px;color:var(--ink);margin:0 0 6px">Timeline vuota</div>
             <p style="margin:0 auto;max-width:420px;font-size:14.5px">{{ timeEmptyMsg }}</p>
           </div>
           </sc-if>
@@ -795,14 +801,14 @@
             <svg viewBox="0 0 100 100" preserveAspectRatio="none" style="position:absolute;inset:0;width:100%;height:100%;overflow:visible;z-index:1"><polyline points="{{ pathLine }}" fill="none" stroke="var(--primary)" stroke-width="2.5" stroke-dasharray="7 6" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/></svg>
             <sc-for list="{{ pathItems }}" as="p" hint-placeholder-count="4">
               <button onClick="{{ p.peek }}" title="{{ p.text }} · {{ p.whenLabel }}" style="position:absolute;left:{{ p.pinX }};top:{{ p.pinY }};transform:translate(-50%,-50%);z-index:2;background:none;padding:0" style-hover="z-index:4">
-                <span style="display:flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:50%;background:{{ p.tc }};color:#fff;font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:15px;border:3px solid var(--surface);box-shadow:0 3px 8px -2px rgba(0,0,0,.5)">{{ p.order }}</span>
+                <span style="display:flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:50%;background:{{ p.tc }};color:#fff;font-family:var(--font-head);font-weight:800;font-size:15px;border:3px solid var(--surface);box-shadow:0 3px 8px -2px rgba(0,0,0,.5)">{{ p.order }}</span>
               </button>
             </sc-for>
           </div>
           <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:14px">
             <sc-for list="{{ pathItems }}" as="p" hint-placeholder-count="4">
               <button onClick="{{ p.peek }}" style="display:flex;align-items:center;gap:9px;background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:5px 14px 5px 5px;transition:border-color .15s" style-hover="border-color:var(--primary)">
-                <span style="display:flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:50%;background:{{ p.tc }};color:#fff;font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:12px;flex-shrink:0">{{ p.order }}</span>
+                <span style="display:flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:50%;background:{{ p.tc }};color:#fff;font-family:var(--font-head);font-weight:800;font-size:12px;flex-shrink:0">{{ p.order }}</span>
                 <span style="font-weight:600;font-size:14px;color:var(--ink)">{{ p.placeName }}</span>
                 <span style="font-size:12.5px;color:var(--soft)">{{ p.whenLabel }}</span>
               </button>
@@ -811,7 +817,7 @@
           </sc-if>
           <sc-if value="{{ pathEmpty }}" hint-placeholder-val="{{ false }}">
           <div style="text-align:center;padding:56px 24px;border:1.5px dashed var(--line);border-radius:18px;color:var(--soft)">
-            <div style="font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:18px;color:var(--ink);margin:0 0 6px">Percorso non tracciabile</div>
+            <div style="font-family:var(--font-head);font-weight:700;font-size:18px;color:var(--ink);margin:0 0 6px">Percorso non tracciabile</div>
             <p style="margin:0 auto;max-width:440px;font-size:14.5px">{{ pathEmptyMsg }}</p>
           </div>
           </sc-if>
@@ -825,7 +831,7 @@
       <sc-if value="{{ tabShare }}" hint-placeholder-val="{{ false }}">
       <div style="display:flex;flex-wrap:wrap;gap:20px">
         <section style="flex:1 1 300px">
-          <h3 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:18px;margin:0 0 6px">Condivisione diretta</h3>
+          <h3 style="font-family:var(--font-head);font-weight:700;font-size:18px;margin:0 0 6px">Condivisione diretta</h3>
           <p style="margin:0 0 14px;color:var(--soft);font-size:14px">Concedi accesso a singoli utenti.</p>
           <div style="display:flex;gap:8px;margin-bottom:16px">
             <input placeholder="Username o email…" style="flex:1;padding:10px 14px;border-radius:10px;border:1px solid var(--line);background:var(--surface);color:var(--ink);outline:none"/>
@@ -843,7 +849,7 @@
           </div>
         </section>
         <section style="flex:1 1 300px">
-          <h3 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:18px;margin:0 0 6px">Visibilità di gruppo</h3>
+          <h3 style="font-family:var(--font-head);font-weight:700;font-size:18px;margin:0 0 6px">Visibilità di gruppo</h3>
           <p style="margin:0 0 14px;color:var(--soft);font-size:14px">Esponi la lista ai membri di un gruppo.</p>
           <div style="display:flex;flex-direction:column;gap:9px">
             <sc-for list="{{ groupShares }}" as="gs" hint-placeholder-count="1">
@@ -864,11 +870,11 @@
       <sc-if value="{{ tabVersions }}" hint-placeholder-val="{{ false }}">
       <div>
         <div style="display:flex;flex-wrap:wrap;gap:14px;margin-bottom:22px">
-          <div style="flex:1 1 200px;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:18px"><div style="color:var(--soft);font-size:13px">Versione corrente</div><div style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:30px;color:var(--primary)">v{{ active.version }}</div></div>
-          <div style="flex:1 1 200px;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:18px"><div style="color:var(--soft);font-size:13px">Fork esistenti</div><div style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:30px;color:var(--violet)">{{ active.forks }}</div></div>
+          <div style="flex:1 1 200px;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:18px"><div style="color:var(--soft);font-size:13px">Versione corrente</div><div style="font-family:var(--font-head);font-weight:800;font-size:30px;color:var(--primary)">v{{ active.version }}</div></div>
+          <div style="flex:1 1 200px;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:18px"><div style="color:var(--soft);font-size:13px">Fork esistenti</div><div style="font-family:var(--font-head);font-weight:800;font-size:30px;color:var(--violet)">{{ active.forks }}</div></div>
           <div style="flex:1 1 200px;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:18px;display:flex;flex-direction:column;justify-content:center;gap:8px"><button onClick="{{ demoAction }}" style="background:var(--violet);color:#fff;font-weight:600;padding:10px;border-radius:10px">Unisci aggiornamenti dall'origine</button></div>
         </div>
-        <h3 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:18px;margin:0 0 4px">Diff con l'origine</h3>
+        <h3 style="font-family:var(--font-head);font-weight:700;font-size:18px;margin:0 0 4px">Diff con l'origine</h3>
         <p style="margin:0 0 16px;color:var(--soft);font-size:14px">Confronto tra questo fork e la lista da cui deriva.</p>
         <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px">
           <sc-for list="{{ diffCols }}" as="d" hint-placeholder-count="3">
@@ -915,20 +921,20 @@
     <sc-if value="{{ isGroups }}" hint-placeholder-val="{{ false }}">
     <div style="animation:l2mRise .4s ease both">
       <div style="display:flex;flex-wrap:wrap;gap:16px;align-items:flex-end;justify-content:space-between;margin-bottom:22px">
-        <div><h1 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:clamp(26px,4vw,38px);letter-spacing:-.02em;margin:0">Gruppi</h1><p style="margin:6px 0 0;color:var(--soft)">Condividi liste con le persone giuste.</p></div>
+        <div><h1 style="font-family:var(--font-head);font-weight:800;font-size:clamp(26px,4vw,38px);letter-spacing:-.02em;margin:0">Gruppi</h1><p style="margin:6px 0 0;color:var(--soft)">Condividi liste con le persone giuste.</p></div>
         <button onClick="{{ openNewGroup }}" style="background:var(--primary);color:#fff;font-weight:600;font-size:15px;padding:11px 20px;border-radius:12px">+ Nuovo gruppo</button>
       </div>
       <sc-if value="{{ hasInvites }}" hint-placeholder-val="{{ true }}">
       <section style="margin-bottom:28px">
-        <h2 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:18px;margin:0 0 12px">Inviti in sospeso</h2>
+        <h2 style="font-family:var(--font-head);font-weight:700;font-size:18px;margin:0 0 12px">Inviti in sospeso</h2>
         <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px">
           <sc-for list="{{ invites }}" as="iv" hint-placeholder-count="2">
             <div style="background:linear-gradient(135deg,var(--surface),var(--violetSoft));border:1px solid var(--line);border-radius:16px;padding:16px">
               <div style="display:flex;align-items:center;gap:11px;margin-bottom:3px">
                 <span style="width:40px;height:40px;border-radius:11px;flex-shrink:0;background:repeating-linear-gradient(135deg,var(--surface),var(--surface) 6px,var(--line) 6px,var(--line) 7px)"></span>
-                <div style="font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:18px">{{ iv.name }}</div>
+                <div style="font-family:var(--font-head);font-weight:700;font-size:18px">{{ iv.name }}</div>
               </div>
-              <div style="color:var(--soft);font-size:13.5px;margin-bottom:13px">Invito da {{ iv.from }} · {{ iv.members }} membri</div>
+              <div style="color:var(--soft);font-size:13.5px;margin-bottom:13px">Invito da <button onClick="{{ iv.openFrom }}" title="Vedi il profilo di {{ iv.from }}" style="color:var(--primary);font-weight:600;background:none;padding:0" style-hover="text-decoration:underline">{{ iv.from }}</button> · <button onClick="{{ iv.openMembers }}" title="Vedi i membri" style="color:var(--ink);font-weight:600;background:none;padding:0;text-decoration:underline;text-decoration-color:var(--line);text-underline-offset:2px" style-hover="text-decoration-color:var(--primary)">{{ iv.members }} membri</button></div>
               <div style="display:flex;gap:8px">
                 <button onClick="{{ iv.accept }}" style="background:var(--teal);color:#fff;font-weight:600;padding:8px 16px;border-radius:9px;font-size:14px">Accetta</button>
                 <button onClick="{{ iv.reject }}" style="background:var(--surface);border:1px solid var(--line);color:var(--ink);font-weight:600;padding:8px 16px;border-radius:9px;font-size:14px">Rifiuta</button>
@@ -939,13 +945,13 @@
       </section>
       </sc-if>
       <section>
-        <h2 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:18px;margin:0 0 12px">I tuoi gruppi</h2>
+        <h2 style="font-family:var(--font-head);font-weight:700;font-size:18px;margin:0 0 12px">I tuoi gruppi</h2>
         <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(285px,1fr));gap:16px">
           <sc-for list="{{ groups }}" as="g" hint-placeholder-count="3">
             <div style="background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:18px">
               <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px">
                 <span style="width:46px;height:46px;border-radius:13px;flex-shrink:0;background:repeating-linear-gradient(135deg,var(--surface2),var(--surface2) 6px,var(--line) 6px,var(--line) 7px)"></span>
-                <div style="flex:1;min-width:0"><div style="font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:18px;line-height:1.15">{{ g.name }}</div><div style="color:var(--soft);font-size:13px;margin-top:2px">{{ g.members }} membri · {{ g.roleLabel }}</div></div>
+                <div style="flex:1;min-width:0"><div style="font-family:var(--font-head);font-weight:700;font-size:18px;line-height:1.15">{{ g.name }}</div><div style="color:var(--soft);font-size:13px;margin-top:2px">{{ g.members }} membri · {{ g.roleLabel }}</div></div>
               </div>
               <p style="margin:0 0 14px;color:var(--soft);font-size:14px">{{ g.desc }}</p>
               <div style="display:flex;gap:8px;flex-wrap:wrap">
@@ -967,7 +973,7 @@
         <span style="width:66px;height:66px;border-radius:17px;flex-shrink:0;background:repeating-linear-gradient(135deg,var(--surface2),var(--surface2) 6px,var(--line) 6px,var(--line) 7px)"></span>
         <div style="flex:1;min-width:240px">
           <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:4px">
-            <h1 contentEditable="{{ gDetail.editable }}" suppressContentEditableWarning="{{ true }}" onBlur="{{ gDetail.saveName }}" title="{{ gDetail.nameTitle }}" style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:clamp(24px,4vw,34px);letter-spacing:-.02em;margin:0;outline:none;border-radius:8px;padding:2px 4px;margin-left:-4px">{{ gDetail.name }}</h1>
+            <h1 contentEditable="{{ gDetail.editable }}" suppressContentEditableWarning="{{ true }}" onBlur="{{ gDetail.saveName }}" title="{{ gDetail.nameTitle }}" style="font-family:var(--font-head);font-weight:800;font-size:clamp(24px,4vw,34px);letter-spacing:-.02em;margin:0;outline:none;border-radius:8px;padding:2px 4px;margin-left:-4px">{{ gDetail.name }}</h1>
             <span style="font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;padding:4px 11px;border-radius:999px;background:var(--violetSoft);color:var(--violet)">{{ gDetail.roleBadge }}</span>
           </div>
           <p contentEditable="{{ gDetail.editable }}" suppressContentEditableWarning="{{ true }}" onBlur="{{ gDetail.saveDesc }}" style="margin:0;color:var(--soft);font-size:15px;line-height:1.5;outline:none;border-radius:8px;padding:2px 4px;margin-left:-4px">{{ gDetail.desc }}</p>
@@ -976,7 +982,7 @@
       </div>
 
       <section style="background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:clamp(18px,3vw,24px);margin-bottom:20px">
-        <h2 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:19px;margin:0 0 4px">Membri</h2>
+        <h2 style="font-family:var(--font-head);font-weight:700;font-size:19px;margin:0 0 4px">Membri</h2>
         <p style="margin:0 0 16px;color:var(--soft);font-size:14px">Chi fa parte del gruppo e cosa può fare.</p>
         <sc-if value="{{ gDetail.isAdmin }}" hint-placeholder-val="{{ true }}">
         <div style="display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap">
@@ -988,7 +994,7 @@
           <sc-for list="{{ gDetail.members }}" as="m" hint-placeholder-count="4">
             <div style="display:flex;align-items:center;gap:12px;padding:11px 14px;border:1px solid var(--line);border-radius:13px;flex-wrap:wrap">
               <button onClick="{{ m.openProfile }}" title="Vedi il profilo di {{ m.name }}" style="display:flex;align-items:center;gap:12px;background:none;padding:0;min-width:0;flex:1" style-hover="opacity:.75">
-                <span style="width:38px;height:38px;border-radius:50%;flex-shrink:0;background:var(--violetSoft);color:var(--violet);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;font-family:'Bricolage Grotesque',sans-serif">{{ m.init }}</span>
+                <span style="width:38px;height:38px;border-radius:50%;flex-shrink:0;background:var(--violetSoft);color:var(--violet);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;font-family:var(--font-head)">{{ m.init }}</span>
                 <span style="min-width:0;text-align:left"><span style="display:block;font-weight:600;font-size:14.5px;color:var(--ink)">{{ m.name }}</span><span style="display:block;color:var(--soft);font-size:12.5px">@{{ m.user }}</span></span>
               </button>
               <span style="font-size:11px;font-weight:700;text-transform:uppercase;padding:3px 10px;border-radius:999px;background:{{ m.roleBg }};color:{{ m.roleFg }}">{{ m.roleLabel }}</span>
@@ -1004,7 +1010,7 @@
       </section>
 
       <section style="background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:clamp(18px,3vw,24px);margin-bottom:20px">
-        <h2 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:19px;margin:0 0 4px">Liste condivise</h2>
+        <h2 style="font-family:var(--font-head);font-weight:700;font-size:19px;margin:0 0 4px">Liste condivise</h2>
         <p style="margin:0 0 16px;color:var(--soft);font-size:14px">Liste esposte a tutti i membri di questo gruppo.</p>
         <sc-if value="{{ gDetail.hasLists }}" hint-placeholder-val="{{ true }}">
         <div style="display:flex;flex-direction:column;gap:8px">
@@ -1020,7 +1026,7 @@
       </section>
 
       <section style="border:1px solid var(--line);border-radius:20px;padding:clamp(18px,3vw,24px)">
-        <h2 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:19px;margin:0 0 4px">Impostazioni</h2>
+        <h2 style="font-family:var(--font-head);font-weight:700;font-size:19px;margin:0 0 4px">Impostazioni</h2>
         <p style="margin:0 0 16px;color:var(--soft);font-size:14px">{{ gDetail.settingsNote }}</p>
         <button onClick="{{ gDetail.del }}" style="background:color-mix(in srgb,var(--primary) 12%,var(--surface));color:var(--primary);font-weight:600;padding:10px 18px;border-radius:11px">{{ gDetail.delLabel }}</button>
       </section>
@@ -1030,14 +1036,14 @@
     <!-- UTENTI -->
     <sc-if value="{{ isUsers }}" hint-placeholder-val="{{ false }}">
     <div style="animation:l2mRise .4s ease both">
-      <h1 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:clamp(26px,4vw,38px);letter-spacing:-.02em;margin:0 0 6px">Persone</h1>
+      <h1 style="font-family:var(--font-head);font-weight:800;font-size:clamp(26px,4vw,38px);letter-spacing:-.02em;margin:0 0 6px">Persone</h1>
       <p style="margin:0 0 20px;color:var(--soft)">Trova persone da seguire e scopri le loro liste.</p>
       <input value="{{ userQuery }}" onChange="{{ onUserSearch }}" placeholder="Cerca per nome o username…" style="width:100%;max-width:460px;padding:12px 16px;border-radius:12px;border:1px solid var(--line);background:var(--surface);color:var(--ink);font-size:15px;outline:none;margin-bottom:26px"/>
       <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px;margin-bottom:34px">
         <sc-for list="{{ users }}" as="u" hint-placeholder-count="5">
           <div style="background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:16px;display:flex;flex-direction:column;align-items:center;text-align:center">
             <button onClick="{{ u.open }}" title="Vedi il profilo di {{ u.name }}" style="display:flex;flex-direction:column;align-items:center;background:none;padding:0;width:100%" style-hover="opacity:.75">
-              <span style="width:56px;height:56px;border-radius:50%;background:var(--violetSoft);color:var(--violet);display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:700;font-family:'Bricolage Grotesque',sans-serif;margin-bottom:10px">{{ u.init }}</span>
+              <span style="width:56px;height:56px;border-radius:50%;background:var(--violetSoft);color:var(--violet);display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:700;font-family:var(--font-head);margin-bottom:10px">{{ u.init }}</span>
               <span style="font-weight:600;font-size:16px;color:var(--ink)">{{ u.name }}</span>
               <span style="color:var(--soft);font-size:13px">@{{ u.user }}</span>
             </button>
@@ -1049,7 +1055,7 @@
 
       <sc-if value="{{ isAdmin }}" hint-placeholder-val="{{ true }}">
       <section style="background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:clamp(18px,3vw,26px)">
-        <div style="display:flex;align-items:center;gap:10px;margin-bottom:6px"><span style="font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;background:var(--primary);color:#fff;padding:3px 10px;border-radius:999px">Admin</span><h2 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:19px;margin:0">Moderazione account</h2></div>
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:6px"><span style="font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;background:var(--primary);color:#fff;padding:3px 10px;border-radius:999px">Admin</span><h2 style="font-family:var(--font-head);font-weight:700;font-size:19px;margin:0">Moderazione account</h2></div>
         <p style="margin:0 0 16px;color:var(--soft);font-size:14px">Ricerca, disattiva o promuovi gli account.</p>
         <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px">
           <sc-for list="{{ adminFilters }}" as="af" hint-placeholder-count="3"><button onClick="{{ af.go }}" style="font-size:13.5px;font-weight:600;padding:7px 15px;border-radius:999px;background:{{ af.bg }};color:{{ af.fg }};border:1px solid var(--line)">{{ af.label }}</button></sc-for>
@@ -1072,18 +1078,93 @@
     </div>
     </sc-if>
 
+    <!-- IMPOSTAZIONI -->
+    <sc-if value="{{ isSettings }}" hint-placeholder-val="{{ false }}">
+    <div style="animation:l2mRise .4s ease both;max-width:820px">
+      <h1 style="font-family:var(--font-head);font-weight:800;font-size:clamp(26px,4vw,38px);letter-spacing:-.02em;margin:0">Impostazioni</h1>
+      <p style="margin:6px 0 26px;color:var(--soft)">Personalizza l'aspetto e le viste predefinite. Le modifiche si applicano subito, solo per te.</p>
+
+      <section style="background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:22px;margin-bottom:18px">
+        <h2 style="font-family:var(--font-head);font-weight:700;font-size:18px;margin:0 0 4px">Aspetto</h2>
+        <p style="margin:0 0 18px;color:var(--soft);font-size:14px">Tema, colori, carattere e dimensione dell'interfaccia.</p>
+
+        <div style="margin-bottom:22px">
+          <label style="display:block;font-size:13px;font-weight:700;color:var(--soft);text-transform:uppercase;letter-spacing:.04em;margin-bottom:9px">Tema</label>
+          <div style="display:inline-flex;flex-wrap:wrap;gap:4px;background:var(--surface2);border:1px solid var(--line);border-radius:12px;padding:4px">
+            <sc-for list="{{ themeOpts }}" as="o" hint-placeholder-count="2"><button onClick="{{ o.select }}" style="display:flex;align-items:center;gap:7px;padding:8px 16px;border-radius:9px;font-weight:600;font-size:14px;background:{{ o.bg }};color:{{ o.fg }};border:1px solid transparent">{{ o.icon }} {{ o.label }}</button></sc-for>
+          </div>
+        </div>
+
+        <div style="margin-bottom:22px">
+          <label style="display:block;font-size:13px;font-weight:700;color:var(--soft);text-transform:uppercase;letter-spacing:.04em;margin-bottom:9px">Palette colori</label>
+          <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px">
+            <sc-for list="{{ setPalettes }}" as="p" hint-placeholder-count="4">
+              <button onClick="{{ p.select }}" title="{{ p.label }}" style="text-align:left;padding:13px 14px;border-radius:14px;border:1.5px solid {{ p.bd }};background:{{ p.bg }};display:flex;flex-direction:column;gap:9px;cursor:pointer;transition:border-color .15s,background .15s">
+                <span style="display:flex;align-items:center;gap:8px">
+                  <span style="display:flex;gap:4px">
+                    <sc-for list="{{ p.swatch }}" as="sw" hint-placeholder-count="4"><span style="width:18px;height:18px;border-radius:5px;background:{{ sw }};box-shadow:inset 0 0 0 1px rgba(0,0,0,.08)"></span></sc-for>
+                  </span>
+                  <span style="margin-left:auto;color:var(--primary);font-weight:800;font-size:14px">{{ p.mark }}</span>
+                </span>
+                <span style="font-weight:700;font-size:14.5px;color:var(--ink)">{{ p.label }}</span>
+                <span style="font-size:12.5px;color:var(--soft);line-height:1.4;text-wrap:pretty">{{ p.note }}</span>
+              </button>
+            </sc-for>
+          </div>
+        </div>
+
+        <div style="margin-bottom:22px">
+          <label style="display:block;font-size:13px;font-weight:700;color:var(--soft);text-transform:uppercase;letter-spacing:.04em;margin-bottom:9px">Carattere</label>
+          <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:10px">
+            <sc-for list="{{ setFonts }}" as="ft" hint-placeholder-count="4">
+              <button onClick="{{ ft.select }}" title="{{ ft.label }}" style="text-align:left;padding:13px 14px;border-radius:14px;border:1.5px solid {{ ft.bd }};background:{{ ft.bg }};display:flex;flex-direction:column;gap:6px;cursor:pointer;transition:border-color .15s,background .15s">
+                <span style="font-family:{{ ft.sampleFont }};font-size:26px;font-weight:700;line-height:1;color:var(--ink)">Ag</span>
+                <span style="font-weight:700;font-size:14px;color:var(--ink)">{{ ft.label }}</span>
+                <span style="font-size:12px;color:var(--soft);line-height:1.35;text-wrap:pretty">{{ ft.note }}</span>
+              </button>
+            </sc-for>
+          </div>
+        </div>
+
+        <div>
+          <label style="display:block;font-size:13px;font-weight:700;color:var(--soft);text-transform:uppercase;letter-spacing:.04em;margin-bottom:9px">Dimensione</label>
+          <div style="display:inline-flex;flex-wrap:wrap;gap:4px;background:var(--surface2);border:1px solid var(--line);border-radius:12px;padding:4px">
+            <sc-for list="{{ setSizes }}" as="o" hint-placeholder-count="4"><button onClick="{{ o.select }}" style="padding:8px 16px;border-radius:9px;font-weight:600;font-size:14px;background:{{ o.bg }};color:{{ o.fg }};border:1px solid transparent">{{ o.label }}</button></sc-for>
+          </div>
+        </div>
+      </section>
+
+      <section style="background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:22px">
+        <h2 style="font-family:var(--font-head);font-weight:700;font-size:18px;margin:0 0 4px">Visualizzazione predefinita</h2>
+        <p style="margin:0 0 18px;color:var(--soft);font-size:14px">La vista con cui si aprono le liste e gli elementi al loro interno.</p>
+        <div style="margin-bottom:20px">
+          <label style="display:block;font-size:13px;font-weight:700;color:var(--soft);text-transform:uppercase;letter-spacing:.04em;margin-bottom:9px">Le mie liste</label>
+          <div style="display:inline-flex;flex-wrap:wrap;gap:4px;background:var(--surface2);border:1px solid var(--line);border-radius:12px;padding:4px">
+            <sc-for list="{{ listViewOpts }}" as="o" hint-placeholder-count="3"><button onClick="{{ o.select }}" style="padding:8px 16px;border-radius:9px;font-weight:600;font-size:14px;background:{{ o.bg }};color:{{ o.fg }};border:1px solid transparent">{{ o.label }}</button></sc-for>
+          </div>
+        </div>
+        <div>
+          <label style="display:block;font-size:13px;font-weight:700;color:var(--soft);text-transform:uppercase;letter-spacing:.04em;margin-bottom:9px">Elementi di una lista</label>
+          <div style="display:inline-flex;flex-wrap:wrap;gap:4px;background:var(--surface2);border:1px solid var(--line);border-radius:12px;padding:4px">
+            <sc-for list="{{ itemViewOpts }}" as="o" hint-placeholder-count="4"><button onClick="{{ o.select }}" style="padding:8px 16px;border-radius:9px;font-weight:600;font-size:14px;background:{{ o.bg }};color:{{ o.fg }};border:1px solid transparent">{{ o.label }}</button></sc-for>
+          </div>
+        </div>
+      </section>
+    </div>
+    </sc-if>
+
     <!-- PROFILO -->
     <sc-if value="{{ isProfile }}" hint-placeholder-val="{{ false }}">
     <div style="animation:l2mRise .4s ease both;max-width:900px">
       <div style="display:flex;align-items:center;gap:18px;margin-bottom:26px;flex-wrap:wrap">
-        <span style="width:84px;height:84px;border-radius:50%;background:var(--primary);color:#fff;display:flex;align-items:center;justify-content:center;font-size:32px;font-weight:800;font-family:'Bricolage Grotesque',sans-serif">{{ me.init }}</span>
-        <div><h1 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:30px;letter-spacing:-.02em;margin:0">{{ me.name }}</h1><div style="color:var(--soft);font-size:15px">@{{ me.user }} · iscritto {{ me.joined }}</div></div>
+        <span style="width:84px;height:84px;border-radius:50%;background:var(--primary);color:#fff;display:flex;align-items:center;justify-content:center;font-size:32px;font-weight:800;font-family:var(--font-head)">{{ me.init }}</span>
+        <div><h1 style="font-family:var(--font-head);font-weight:800;font-size:30px;letter-spacing:-.02em;margin:0">{{ me.name }}</h1><div style="color:var(--soft);font-size:15px">@{{ me.user }} · iscritto {{ me.joined }}</div></div>
       </div>
       <div style="display:flex;gap:10px;margin-bottom:24px;flex-wrap:wrap">
-        <sc-for list="{{ profileStats }}" as="p" hint-placeholder-count="3"><button onClick="{{ p.go }}" title="{{ p.title }}" style="flex:1 1 100px;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:14px;text-align:center;cursor:pointer;transition:border-color .15s,transform .15s" style-hover="border-color:var(--primary);transform:translateY(-1px)"><div style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:24px;color:var(--primary)">{{ p.n }}</div><div style="color:var(--soft);font-size:13px;margin-top:2px">{{ p.label }}</div></button></sc-for>
+        <sc-for list="{{ profileStats }}" as="p" hint-placeholder-count="3"><button onClick="{{ p.go }}" title="{{ p.title }}" style="flex:1 1 100px;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:14px;text-align:center;cursor:pointer;transition:border-color .15s,transform .15s" style-hover="border-color:var(--primary);transform:translateY(-1px)"><div style="font-family:var(--font-head);font-weight:800;font-size:24px;color:var(--primary)">{{ p.n }}</div><div style="color:var(--soft);font-size:13px;margin-top:2px">{{ p.label }}</div></button></sc-for>
       </div>
       <div style="background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:22px">
-        <h2 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:18px;margin:0 0 16px">Impostazioni account</h2>
+        <h2 style="font-family:var(--font-head);font-weight:700;font-size:18px;margin:0 0 16px">Impostazioni account</h2>
         <div style="display:flex;flex-direction:column;gap:14px">
           <div><label style="display:block;font-size:13px;font-weight:600;color:var(--soft);margin-bottom:5px">Nome visualizzato</label><input value="{{ me.name }}" onChange="{{ editName }}" style="width:100%;padding:10px 13px;border-radius:10px;border:1px solid var(--line);background:var(--bg);color:var(--ink);outline:none"/></div>
           <div>
@@ -1114,7 +1195,7 @@
       </div>
 
       <div style="background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:22px;margin-top:20px">
-        <h2 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:18px;margin:0 0 4px">Privacy del profilo</h2>
+        <h2 style="font-family:var(--font-head);font-weight:700;font-size:18px;margin:0 0 4px">Privacy del profilo</h2>
         <p style="margin:0 0 6px;color:var(--soft);font-size:14px;max-width:620px;text-wrap:pretty">Scegli cosa mostrare nel tuo profilo e, per ogni campo, chi può vederlo. Lo <strong style="color:var(--ink)">username</strong> è sempre visibile: se nascondi il nome, sarai identificato solo come <span style="font-family:ui-monospace,monospace;color:var(--ink)">@giulia</span>.</p>
         <div style="display:flex;flex-wrap:wrap;gap:6px 14px;margin:12px 0 4px">
           <span style="font-size:11.5px;color:var(--soft)"><strong style="color:var(--ink)">Privato</strong> solo tu</span>
@@ -1160,7 +1241,7 @@
       </div>
 
       <div style="background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:22px;margin-top:20px">
-        <h2 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:18px;margin:0 0 4px">Anteprima del profilo pubblico</h2>
+        <h2 style="font-family:var(--font-head);font-weight:700;font-size:18px;margin:0 0 4px">Anteprima del profilo pubblico</h2>
         <p style="margin:0 0 14px;color:var(--soft);font-size:14px">Chi visita il tuo profilo vede solo i dati a cui ha diritto. Scegli chi sta guardando:</p>
         <div style="display:flex;flex-wrap:wrap;gap:9px;margin-bottom:18px">
           <sc-for list="{{ previewPersonas }}" as="p" hint-placeholder-count="5">
@@ -1172,9 +1253,9 @@
         </div>
         <div style="background:var(--bg);border:1px solid var(--line);border-radius:16px;padding:20px">
           <div style="display:flex;align-items:flex-start;gap:16px;flex-wrap:wrap">
-            <span title="Avatar" style="width:66px;height:66px;border-radius:50%;background:var(--primarySoft);color:var(--primary);display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:800;font-family:'Bricolage Grotesque',sans-serif;flex-shrink:0;opacity:{{ preview.avOp }}">{{ preview.init }}</span>
+            <span title="Avatar" style="width:66px;height:66px;border-radius:50%;background:var(--primarySoft);color:var(--primary);display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:800;font-family:var(--font-head);flex-shrink:0;opacity:{{ preview.avOp }}">{{ preview.init }}</span>
             <div style="flex:1;min-width:180px">
-              <h3 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:22px;letter-spacing:-.02em;margin:0;color:var(--ink)">{{ preview.name }}</h3>
+              <h3 style="font-family:var(--font-head);font-weight:800;font-size:22px;letter-spacing:-.02em;margin:0;color:var(--ink)">{{ preview.name }}</h3>
               <div style="color:var(--soft);font-size:14px;margin-top:2px">@{{ preview.handle }}</div>
               <sc-if value="{{ preview.hasEmail }}" hint-placeholder-val="{{ false }}"><div style="color:var(--soft);font-size:13.5px;margin-top:5px">✉ {{ preview.email }}</div></sc-if>
               <sc-if value="{{ preview.hasBio }}" hint-placeholder-val="{{ true }}"><p style="margin:11px 0 0;color:var(--ink);font-size:14.5px;line-height:1.5;max-width:520px">{{ preview.bio }}</p></sc-if>
@@ -1186,7 +1267,7 @@
             </div>
           </div>
           <div style="display:flex;gap:10px;margin-top:18px;flex-wrap:wrap">
-            <sc-for list="{{ preview.stats }}" as="p" hint-placeholder-count="3"><div style="flex:1 1 100px;background:var(--surface2);border-radius:12px;padding:12px;text-align:center;opacity:{{ p.op }}"><div style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:20px;color:var(--ink)">{{ p.n }}</div><div style="color:var(--soft);font-size:12px;margin-top:2px">{{ p.label }}</div></div></sc-for>
+            <sc-for list="{{ preview.stats }}" as="p" hint-placeholder-count="3"><div style="flex:1 1 100px;background:var(--surface2);border-radius:12px;padding:12px;text-align:center;opacity:{{ p.op }}"><div style="font-family:var(--font-head);font-weight:800;font-size:20px;color:var(--ink)">{{ p.n }}</div><div style="color:var(--soft);font-size:12px;margin-top:2px">{{ p.label }}</div></div></sc-for>
           </div>
         </div>
         <div style="display:flex;flex-direction:column;gap:6px;margin-top:14px">
@@ -1205,9 +1286,9 @@
 
       <div style="background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:clamp(20px,3vw,28px);margin-bottom:26px">
         <div style="display:flex;align-items:flex-start;gap:18px;flex-wrap:wrap">
-          <span style="width:76px;height:76px;border-radius:50%;background:var(--violetSoft);color:var(--violet);display:flex;align-items:center;justify-content:center;font-size:28px;font-weight:800;font-family:'Bricolage Grotesque',sans-serif;flex-shrink:0">{{ pu.init }}</span>
+          <span style="width:76px;height:76px;border-radius:50%;background:var(--violetSoft);color:var(--violet);display:flex;align-items:center;justify-content:center;font-size:28px;font-weight:800;font-family:var(--font-head);flex-shrink:0">{{ pu.init }}</span>
           <div style="flex:1;min-width:200px">
-            <h1 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:clamp(24px,3.4vw,32px);letter-spacing:-.02em;margin:0">{{ pu.name }}</h1>
+            <h1 style="font-family:var(--font-head);font-weight:800;font-size:clamp(24px,3.4vw,32px);letter-spacing:-.02em;margin:0">{{ pu.name }}</h1>
             <div style="color:var(--soft);font-size:15px;margin-top:2px">@{{ pu.handle }}</div>
             <sc-if value="{{ pu.hasEmail }}" hint-placeholder-val="{{ false }}"><div style="color:var(--soft);font-size:13.5px;margin-top:5px;display:inline-flex;align-items:center;gap:6px">✉ {{ pu.email }}</div></sc-if>
             <sc-if value="{{ pu.hasBio }}" hint-placeholder-val="{{ true }}">
@@ -1222,7 +1303,7 @@
           <button onClick="{{ pu.toggleFollow }}" style="font-weight:600;font-size:14.5px;padding:10px 22px;border-radius:11px;background:{{ pu.followBg }};color:{{ pu.followFg }};border:1px solid {{ pu.followBd }};flex-shrink:0">{{ pu.followLabel }}</button>
         </div>
         <div style="display:flex;gap:10px;margin-top:20px;flex-wrap:wrap">
-          <sc-for list="{{ pu.stats }}" as="p" hint-placeholder-count="3"><button onClick="{{ p.go }}" title="{{ p.label }}" style="flex:1 1 110px;background:var(--surface2);border-radius:13px;padding:13px;text-align:center;cursor:{{ p.cursor }};opacity:{{ p.op }};border:none;transition:transform .14s" style-hover="transform:translateY(-2px)"><div style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:22px;color:var(--ink)">{{ p.n }}</div><div style="color:var(--soft);font-size:12.5px;margin-top:2px">{{ p.label }}</div></button></sc-for>
+          <sc-for list="{{ pu.stats }}" as="p" hint-placeholder-count="3"><button onClick="{{ p.go }}" title="{{ p.label }}" style="flex:1 1 110px;background:var(--surface2);border-radius:13px;padding:13px;text-align:center;cursor:{{ p.cursor }};opacity:{{ p.op }};border:none;transition:transform .14s" style-hover="transform:translateY(-2px)"><div style="font-family:var(--font-head);font-weight:800;font-size:22px;color:var(--ink)">{{ p.n }}</div><div style="color:var(--soft);font-size:12.5px;margin-top:2px">{{ p.label }}</div></button></sc-for>
         </div>
         <sc-if value="{{ pu.hasPrivate }}" hint-placeholder-val="{{ false }}">
           <div style="display:flex;align-items:center;gap:8px;margin-top:16px;padding-top:15px;border-top:1px solid var(--line);color:var(--soft);font-size:13px">
@@ -1233,7 +1314,7 @@
       </div>
 
       <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:14px">
-        <h2 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:20px;margin:0">Liste pubbliche</h2>
+        <h2 style="font-family:var(--font-head);font-weight:700;font-size:20px;margin:0">Liste pubbliche</h2>
         <span style="font-size:13.5px;color:var(--soft)">{{ pu.countLabel }}</span>
       </div>
 
@@ -1261,7 +1342,7 @@
             <div style="height:112px;margin:-16px -16px 13px;border-radius:18px 18px 0 0;background:repeating-linear-gradient(135deg,var(--surface2),var(--surface2) 8px,var(--line) 8px,var(--line) 9px);display:flex;align-items:flex-end;padding:10px">
               <span style="font-family:ui-monospace,monospace;font-size:10px;color:var(--soft);background:var(--surface);padding:3px 7px;border-radius:6px">{{ l.cover }}</span>
             </div>
-            <button onClick="{{ l.go }}" style="text-align:left;font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:18px;letter-spacing:-.01em;color:var(--ink);line-height:1.2;margin-bottom:6px">{{ l.title }}</button>
+            <button onClick="{{ l.go }}" style="text-align:left;font-family:var(--font-head);font-weight:700;font-size:18px;letter-spacing:-.01em;color:var(--ink);line-height:1.2;margin-bottom:6px">{{ l.title }}</button>
             <p style="margin:0 0 11px;color:var(--soft);font-size:13px;line-height:1.4">{{ l.desc }}</p>
             <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:13px">
               <sc-for list="{{ l.tags }}" as="t" hint-placeholder-count="2"><button data-tag="{{ t }}" onClick="{{ onTagClick }}" title="Filtra Esplora per #{{ t }}" style="font-size:12px;color:var(--soft);background:var(--surface2);padding:3px 9px;border-radius:7px;cursor:pointer;transition:background .12s,color .12s" style-hover="background:var(--primary);color:#fff">#{{ t }}</button></sc-for>
@@ -1275,7 +1356,7 @@
       </div>
       <sc-if value="{{ pu.empty }}" hint-placeholder-val="{{ false }}">
         <div style="text-align:center;padding:56px 20px;color:var(--soft)">
-          <p style="font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:18px;color:var(--ink);margin:0 0 6px">Nessuna lista pubblica</p>
+          <p style="font-family:var(--font-head);font-weight:700;font-size:18px;color:var(--ink);margin:0 0 6px">Nessuna lista pubblica</p>
           <p style="margin:0;font-size:14.5px">Prova a rimuovere qualche filtro.</p>
         </div>
       </sc-if>
@@ -1291,7 +1372,7 @@
 <div>
   <header style="position:sticky;top:0;z-index:30;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)">
     <div style="max-width:1180px;margin:0 auto;padding:13px clamp(16px,4vw,40px);display:flex;align-items:center;gap:14px">
-      <div style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:23px;letter-spacing:-.02em;flex:1">List<span style="color:var(--primary)">2</span>Me</div>
+      <div style="font-family:var(--font-head);font-weight:800;font-size:23px;letter-spacing:-.02em;flex:1">List<span style="color:var(--primary)">2</span>Me</div>
       <button onClick="{{ toggleTheme }}" style="width:38px;height:38px;border-radius:50%;border:1px solid var(--line);background:var(--surface);color:var(--ink);font-size:16px">{{ themeIcon }}</button>
       <button onClick="{{ openAuthLogin }}" style="font-weight:600;font-size:14.5px;padding:9px 16px;border-radius:10px;color:var(--ink)">Accedi</button>
       <button onClick="{{ openAuthRegister }}" style="font-weight:600;font-size:14.5px;padding:9px 18px;border-radius:10px;background:var(--primary);color:#fff;box-shadow:0 6px 18px -8px var(--primary)">Iscriviti</button>
@@ -1301,7 +1382,7 @@
   <section style="max-width:1180px;margin:0 auto;padding:clamp(36px,7vw,80px) clamp(16px,4vw,40px) clamp(30px,5vw,56px);display:flex;flex-wrap:wrap;gap:44px;align-items:center">
     <div style="flex:1 1 380px;min-width:0">
       <span style="display:inline-block;font-size:12.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--primary);background:var(--primarySoft);padding:6px 13px;border-radius:999px;margin-bottom:20px">Le liste, ma vive</span>
-      <h1 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:clamp(38px,6vw,68px);line-height:1.02;letter-spacing:-.03em;margin:0 0 18px">Fai una lista<br/>di tutto.<br/><span style="color:var(--primary)">Poi condividila.</span></h1>
+      <h1 style="font-family:var(--font-head);font-weight:800;font-size:clamp(38px,6vw,68px);line-height:1.02;letter-spacing:-.03em;margin:0 0 18px">Fai una lista<br/>di tutto.<br/><span style="color:var(--primary)">Poi condividila.</span></h1>
       <p style="margin:0 0 28px;color:var(--soft);font-size:clamp(16px,2vw,19px);max-width:480px">Film, libri, viaggi, dischi, scoperte: List2Me li trasforma in liste ordinate, <strong style="color:var(--ink);font-weight:600">arricchite in automatico</strong> con dati e copertine, da <strong style="color:var(--ink);font-weight:600">creare, modificare e condividere</strong> con chi vuoi.</p>
       <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center">
         <button onClick="{{ openAuthRegister }}" style="font-weight:700;font-size:16px;padding:14px 26px;border-radius:13px;background:var(--primary);color:#fff;box-shadow:0 10px 26px -10px var(--primary)">Iscriviti, è gratis</button>
@@ -1322,8 +1403,8 @@
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px">
       <sc-for list="{{ valueProps }}" as="v" hint-placeholder-count="3">
         <div style="background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:22px">
-          <span style="display:flex;width:42px;height:42px;border-radius:12px;align-items:center;justify-content:center;font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:15px;background:{{ v.bg }};color:{{ v.c }};margin-bottom:14px">{{ v.icon }}</span>
-          <h3 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:19px;margin:0 0 6px">{{ v.title }}</h3>
+          <span style="display:flex;width:42px;height:42px;border-radius:12px;align-items:center;justify-content:center;font-family:var(--font-head);font-weight:800;font-size:15px;background:{{ v.bg }};color:{{ v.c }};margin-bottom:14px">{{ v.icon }}</span>
+          <h3 style="font-family:var(--font-head);font-weight:700;font-size:19px;margin:0 0 6px">{{ v.title }}</h3>
           <p style="margin:0;color:var(--soft);font-size:14.5px">{{ v.body }}</p>
         </div>
       </sc-for>
@@ -1331,7 +1412,7 @@
   </section>
 
   <section style="max-width:1180px;margin:0 auto;padding:clamp(20px,3vw,30px) clamp(16px,4vw,40px) 60px">
-    <h2 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:clamp(24px,3.5vw,34px);letter-spacing:-.02em;margin:0 0 4px">Esplora le liste pubbliche</h2>
+    <h2 style="font-family:var(--font-head);font-weight:800;font-size:clamp(24px,3.5vw,34px);letter-spacing:-.02em;margin:0 0 4px">Esplora le liste pubbliche</h2>
     <p style="margin:0 0 24px;color:var(--soft);font-size:16px">Scopri cosa condivide la community. Apri una lista per leggerla — iscriviti per farne una tua.</p>
     <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:16px">
       <sc-for list="{{ publicLists }}" as="l" hint-placeholder-count="9">
@@ -1345,7 +1426,7 @@
 
   <section style="background:var(--ink);color:var(--bg);margin-top:20px">
     <div style="max-width:1180px;margin:0 auto;padding:clamp(44px,6vw,72px) clamp(16px,4vw,40px);text-align:center">
-      <h2 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:clamp(28px,4vw,44px);letter-spacing:-.02em;margin:0 0 12px">Pronto a organizzare tutto?</h2>
+      <h2 style="font-family:var(--font-head);font-weight:800;font-size:clamp(28px,4vw,44px);letter-spacing:-.02em;margin:0 0 12px">Pronto a organizzare tutto?</h2>
       <p style="margin:0 auto 26px;font-size:17px;opacity:.75;max-width:440px">Crea la tua prima lista in meno di un minuto. Le condividerai in due.</p>
       <button onClick="{{ openAuthRegister }}" style="font-weight:700;font-size:16px;padding:15px 30px;border-radius:13px;background:var(--primary);color:#fff">Inizia gratis</button>
     </div>
@@ -1358,7 +1439,7 @@
 <div>
   <header style="position:sticky;top:0;z-index:30;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)">
     <div style="max-width:1180px;margin:0 auto;padding:13px clamp(16px,4vw,40px);display:flex;align-items:center;gap:14px">
-      <button onClick="{{ backToExplore }}" style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:23px;letter-spacing:-.02em;flex:1;text-align:left;color:var(--ink)">List<span style="color:var(--primary)">2</span>Me</button>
+      <button onClick="{{ backToExplore }}" style="font-family:var(--font-head);font-weight:800;font-size:23px;letter-spacing:-.02em;flex:1;text-align:left;color:var(--ink)">List<span style="color:var(--primary)">2</span>Me</button>
       <button onClick="{{ toggleTheme }}" style="width:38px;height:38px;border-radius:50%;border:1px solid var(--line);background:var(--surface);color:var(--ink);font-size:16px">{{ themeIcon }}</button>
       <button onClick="{{ openAuthLogin }}" style="font-weight:600;font-size:14.5px;padding:9px 16px;border-radius:10px;color:var(--ink)">Accedi</button>
       <button onClick="{{ openAuthRegister }}" style="font-weight:600;font-size:14.5px;padding:9px 18px;border-radius:10px;background:var(--primary);color:#fff">Iscriviti</button>
@@ -1370,7 +1451,7 @@
       <span style="font-family:ui-monospace,monospace;font-size:11px;color:var(--soft);background:var(--surface);padding:3px 8px;border-radius:6px">copertina · {{ guestList.cover }}</span>
     </div>
     <span style="font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;padding:5px 11px;border-radius:999px;background:var(--primarySoft);color:var(--primary)">Pubblica</span>
-    <h1 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:clamp(28px,4.5vw,40px);letter-spacing:-.02em;margin:14px 0 8px">{{ guestList.title }}</h1>
+    <h1 style="font-family:var(--font-head);font-weight:800;font-size:clamp(28px,4.5vw,40px);letter-spacing:-.02em;margin:14px 0 8px">{{ guestList.title }}</h1>
     <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px">
       <sc-for list="{{ guestList.tags }}" as="t" hint-placeholder-count="2"><button data-tag="{{ t }}" onClick="{{ onTagClick }}" title="Filtra Esplora per #{{ t }}" style="font-size:12.5px;color:var(--ink);background:var(--surface);border:1px solid var(--line);padding:4px 11px;border-radius:8px;cursor:pointer;transition:background .12s,color .12s,border-color .12s" style-hover="background:var(--primary);color:#fff;border-color:var(--primary)">#{{ t }}</button></sc-for>
     </div>
@@ -1392,7 +1473,7 @@
     <div style="display:flex;flex-direction:column;gap:11px">
       <sc-for list="{{ guestList.items }}" as="it" hint-placeholder-count="5">
         <div style="background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:14px 16px;display:flex;gap:14px;align-items:flex-start">
-          <span style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:15px;color:var(--line);padding-top:2px">{{ it.pos }}</span>
+          <span style="font-family:var(--font-head);font-weight:800;font-size:15px;color:var(--line);padding-top:2px">{{ it.pos }}</span>
           <sc-if value="{{ it.hasImg }}" hint-placeholder-val="{{ false }}">
           <div style="flex-shrink:0;width:{{ it.imgW }};height:{{ it.imgH }};border-radius:10px;overflow:hidden;background:repeating-linear-gradient(135deg,var(--surface2),var(--surface2) 7px,var(--line) 7px,var(--line) 8px);display:flex;align-items:flex-end;justify-content:center;padding:6px">
             <span style="font-family:ui-monospace,monospace;font-size:9.5px;color:var(--soft);background:var(--surface);padding:2px 5px;border-radius:5px;white-space:nowrap">{{ it.img }}</span>
@@ -1401,7 +1482,7 @@
           <div style="flex:1;min-width:0">
             <div style="display:flex;align-items:center;gap:9px;flex-wrap:wrap;margin-bottom:5px">
               <span style="font-size:10.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:{{ it.tc }};border:1px solid {{ it.tc }};padding:2px 8px;border-radius:6px">{{ it.typeLabel }}</span>
-              <h3 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:17px;margin:0">{{ it.text }}</h3>
+              <h3 style="font-family:var(--font-head);font-weight:700;font-size:17px;margin:0">{{ it.text }}</h3>
             </div>
             <sc-if value="{{ it.detail }}" hint-placeholder-val="{{ false }}"><p style="margin:0;color:var(--ink);font-size:14px">{{ it.detail }}</p></sc-if>
             <sc-if value="{{ it.ext }}" hint-placeholder-val="{{ false }}"><p style="margin:8px 0 0;font-size:12.5px;font-weight:600;color:var(--teal)">↗ Apri su {{ it.ext }}</p></sc-if>
@@ -1410,7 +1491,7 @@
       </sc-for>
     </div>
     <div style="margin-top:26px;background:linear-gradient(135deg,var(--surface),var(--primarySoft));border:1px solid var(--line);border-radius:18px;padding:24px;text-align:center">
-      <h3 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:20px;margin:0 0 6px">Ti piace questa lista?</h3>
+      <h3 style="font-family:var(--font-head);font-weight:700;font-size:20px;margin:0 0 6px">Ti piace questa lista?</h3>
       <p style="margin:0 auto 16px;color:var(--soft);font-size:15px;max-width:380px">Iscriviti per seguirla, farne una copia tutta tua (fork) o proporre modifiche.</p>
       <button onClick="{{ openAuthRegister }}" style="font-weight:700;font-size:15px;padding:13px 26px;border-radius:12px;background:var(--primary);color:#fff;box-shadow:0 8px 22px -10px var(--primary)">Iscriviti gratis</button>
     </div>
@@ -1423,7 +1504,7 @@
 <div>
   <header style="position:sticky;top:0;z-index:30;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)">
     <div style="max-width:1180px;margin:0 auto;padding:13px clamp(16px,4vw,40px);display:flex;align-items:center;gap:14px">
-      <button onClick="{{ backToExplore }}" style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:23px;letter-spacing:-.02em;flex:1;text-align:left;color:var(--ink)">List<span style="color:var(--primary)">2</span>Me</button>
+      <button onClick="{{ backToExplore }}" style="font-family:var(--font-head);font-weight:800;font-size:23px;letter-spacing:-.02em;flex:1;text-align:left;color:var(--ink)">List<span style="color:var(--primary)">2</span>Me</button>
       <button onClick="{{ toggleTheme }}" style="width:38px;height:38px;border-radius:50%;border:1px solid var(--line);background:var(--surface);color:var(--ink);font-size:16px">{{ themeIcon }}</button>
       <button onClick="{{ openAuthLogin }}" style="font-weight:600;font-size:14.5px;padding:9px 16px;border-radius:10px;color:var(--ink)">Accedi</button>
       <button onClick="{{ openAuthRegister }}" style="font-weight:600;font-size:14.5px;padding:9px 18px;border-radius:10px;background:var(--primary);color:#fff">Iscriviti</button>
@@ -1434,9 +1515,9 @@
 
     <div style="background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:clamp(20px,3vw,28px);margin-bottom:26px">
       <div style="display:flex;align-items:flex-start;gap:18px;flex-wrap:wrap">
-        <span style="width:76px;height:76px;border-radius:50%;background:var(--violetSoft);color:var(--violet);display:flex;align-items:center;justify-content:center;font-size:28px;font-weight:800;font-family:'Bricolage Grotesque',sans-serif;flex-shrink:0">{{ pu.init }}</span>
+        <span style="width:76px;height:76px;border-radius:50%;background:var(--violetSoft);color:var(--violet);display:flex;align-items:center;justify-content:center;font-size:28px;font-weight:800;font-family:var(--font-head);flex-shrink:0">{{ pu.init }}</span>
         <div style="flex:1;min-width:200px">
-          <h1 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:clamp(24px,3.4vw,32px);letter-spacing:-.02em;margin:0">{{ pu.name }}</h1>
+          <h1 style="font-family:var(--font-head);font-weight:800;font-size:clamp(24px,3.4vw,32px);letter-spacing:-.02em;margin:0">{{ pu.name }}</h1>
           <div style="color:var(--soft);font-size:15px;margin-top:2px">@{{ pu.handle }}</div>
             <sc-if value="{{ pu.hasEmail }}" hint-placeholder-val="{{ false }}"><div style="color:var(--soft);font-size:13.5px;margin-top:5px;display:inline-flex;align-items:center;gap:6px">✉ {{ pu.email }}</div></sc-if>
           <sc-if value="{{ pu.hasBio }}" hint-placeholder-val="{{ true }}">
@@ -1451,7 +1532,7 @@
         <button onClick="{{ pu.toggleFollow }}" style="font-weight:600;font-size:14.5px;padding:10px 22px;border-radius:11px;background:{{ pu.followBg }};color:{{ pu.followFg }};border:1px solid {{ pu.followBd }};flex-shrink:0">{{ pu.followLabel }}</button>
       </div>
       <div style="display:flex;gap:10px;margin-top:20px;flex-wrap:wrap">
-        <sc-for list="{{ pu.stats }}" as="p" hint-placeholder-count="3"><button onClick="{{ p.go }}" title="{{ p.label }}" style="flex:1 1 110px;background:var(--surface2);border-radius:13px;padding:13px;text-align:center;cursor:{{ p.cursor }};opacity:{{ p.op }};border:none;transition:transform .14s" style-hover="transform:translateY(-2px)"><div style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:22px;color:var(--ink)">{{ p.n }}</div><div style="color:var(--soft);font-size:12.5px;margin-top:2px">{{ p.label }}</div></button></sc-for>
+        <sc-for list="{{ pu.stats }}" as="p" hint-placeholder-count="3"><button onClick="{{ p.go }}" title="{{ p.label }}" style="flex:1 1 110px;background:var(--surface2);border-radius:13px;padding:13px;text-align:center;cursor:{{ p.cursor }};opacity:{{ p.op }};border:none;transition:transform .14s" style-hover="transform:translateY(-2px)"><div style="font-family:var(--font-head);font-weight:800;font-size:22px;color:var(--ink)">{{ p.n }}</div><div style="color:var(--soft);font-size:12.5px;margin-top:2px">{{ p.label }}</div></button></sc-for>
       </div>
       <sc-if value="{{ pu.hasPrivate }}" hint-placeholder-val="{{ false }}">
         <div style="display:flex;align-items:center;gap:8px;margin-top:16px;padding-top:15px;border-top:1px solid var(--line);color:var(--soft);font-size:13px">
@@ -1462,7 +1543,7 @@
     </div>
 
     <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:14px">
-      <h2 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:20px;margin:0">Liste pubbliche</h2>
+      <h2 style="font-family:var(--font-head);font-weight:700;font-size:20px;margin:0">Liste pubbliche</h2>
       <span style="font-size:13.5px;color:var(--soft)">{{ pu.countLabel }}</span>
     </div>
 
@@ -1490,7 +1571,7 @@
           <div style="height:112px;margin:-16px -16px 13px;border-radius:18px 18px 0 0;background:repeating-linear-gradient(135deg,var(--surface2),var(--surface2) 8px,var(--line) 8px,var(--line) 9px);display:flex;align-items:flex-end;padding:10px">
             <span style="font-family:ui-monospace,monospace;font-size:10px;color:var(--soft);background:var(--surface);padding:3px 7px;border-radius:6px">{{ l.cover }}</span>
           </div>
-          <button onClick="{{ l.go }}" style="text-align:left;font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:18px;letter-spacing:-.01em;color:var(--ink);line-height:1.2;margin-bottom:6px">{{ l.title }}</button>
+          <button onClick="{{ l.go }}" style="text-align:left;font-family:var(--font-head);font-weight:700;font-size:18px;letter-spacing:-.01em;color:var(--ink);line-height:1.2;margin-bottom:6px">{{ l.title }}</button>
           <p style="margin:0 0 11px;color:var(--soft);font-size:13px;line-height:1.4">{{ l.desc }}</p>
           <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:13px">
             <sc-for list="{{ l.tags }}" as="t" hint-placeholder-count="2"><button data-tag="{{ t }}" onClick="{{ onTagClick }}" title="Filtra Esplora per #{{ t }}" style="font-size:12px;color:var(--soft);background:var(--surface2);padding:3px 9px;border-radius:7px;cursor:pointer;transition:background .12s,color .12s" style-hover="background:var(--primary);color:#fff">#{{ t }}</button></sc-for>
@@ -1504,7 +1585,7 @@
     </div>
     <sc-if value="{{ pu.empty }}" hint-placeholder-val="{{ false }}">
       <div style="text-align:center;padding:56px 20px;color:var(--soft)">
-        <p style="font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:18px;color:var(--ink);margin:0 0 6px">Nessuna lista pubblica</p>
+        <p style="font-family:var(--font-head);font-weight:700;font-size:18px;color:var(--ink);margin:0 0 6px">Nessuna lista pubblica</p>
         <p style="margin:0;font-size:14.5px">Prova a rimuovere qualche filtro.</p>
       </div>
     </sc-if>
@@ -1517,7 +1598,7 @@
 <div style="min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px;background:radial-gradient(circle at 20% 20%,var(--primarySoft),transparent 45%),radial-gradient(circle at 85% 75%,var(--violetSoft),transparent 45%),var(--bg)">
   <div style="width:100%;max-width:400px;background:var(--surface);border:1px solid var(--line);border-radius:24px;padding:32px 30px 36px;box-shadow:0 30px 60px -30px rgba(0,0,0,.5);animation:l2mPop .4s ease both">
     <button onClick="{{ backToLanding }}" style="color:var(--soft);font-size:13px;font-weight:600;margin-bottom:16px">← Torna alla home</button>
-    <div style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:32px;letter-spacing:-.02em;text-align:center;margin-bottom:6px">List<span style="color:var(--primary)">2</span>Me</div>
+    <div style="font-family:var(--font-head);font-weight:800;font-size:32px;letter-spacing:-.02em;text-align:center;margin-bottom:6px">List<span style="color:var(--primary)">2</span>Me</div>
     <p style="text-align:center;color:var(--soft);margin:0 0 26px">{{ authSubtitle }}</p>
 
     <sc-if value="{{ authLogin }}" hint-placeholder-val="{{ true }}">
@@ -1571,7 +1652,7 @@
 <div onClick="{{ closeNotif }}" style="position:fixed;inset:0;z-index:70;animation:l2mFade .18s ease both">
   <div onClick="{{ stop }}" style="position:absolute;top:64px;right:clamp(14px,4vw,40px);width:min(384px,calc(100vw - 28px));background:var(--surface);border:1px solid var(--line);border-radius:18px;box-shadow:0 24px 54px -18px rgba(0,0,0,.45);overflow:hidden;animation:l2mPop .22s ease both">
     <div style="display:flex;align-items:center;justify-content:space-between;gap:10px;padding:15px 17px;border-bottom:1px solid var(--line)">
-      <h3 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:17px;margin:0">Notifiche</h3>
+      <h3 style="font-family:var(--font-head);font-weight:700;font-size:17px;margin:0">Notifiche</h3>
       <sc-if value="{{ notifBadge }}" hint-placeholder-val="{{ true }}"><button onClick="{{ markAllRead }}" style="font-size:13px;font-weight:600;color:var(--primary)">Segna tutte come lette</button></sc-if>
     </div>
     <div style="max-height:min(460px,66vh);overflow:auto">
@@ -1580,7 +1661,7 @@
         <sc-for list="{{ g.items }}" as="n" hint-placeholder-count="3">
           <button onClick="{{ n.go }}" style="display:flex;gap:12px;width:100%;text-align:left;padding:11px 17px;background:{{ n.bg }};transition:background .14s" style-hover="background:var(--surface2)">
             <span style="position:relative;flex-shrink:0;width:40px;height:40px">
-              <span style="width:40px;height:40px;border-radius:50%;background:{{ n.avBg }};color:{{ n.avFg }};display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;font-family:'Bricolage Grotesque',sans-serif">{{ n.init }}</span>
+              <span style="width:40px;height:40px;border-radius:50%;background:{{ n.avBg }};color:{{ n.avFg }};display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;font-family:var(--font-head)">{{ n.init }}</span>
               <span title="{{ n.catLabel }}" style="position:absolute;right:-3px;bottom:-3px;width:21px;height:21px;border-radius:50%;background:{{ n.cc }};color:#fff;border:2px solid var(--surface);display:flex;align-items:center;justify-content:center">{{ n.icon }}</span>
             </span>
             <span style="flex:1;min-width:0">
@@ -1613,7 +1694,7 @@
 <sc-if value="{{ confirm }}" hint-placeholder-val="{{ false }}">
 <div onClick="{{ closeConfirm }}" style="position:fixed;inset:0;z-index:90;background:rgba(15,10,5,.5);backdrop-filter:blur(3px);display:flex;align-items:center;justify-content:center;padding:24px;animation:l2mFade .2s ease both">
   <div onClick="{{ stop }}" style="background:var(--surface);border-radius:20px;padding:26px;max-width:400px;width:100%;box-shadow:0 30px 60px -20px rgba(0,0,0,.6);animation:l2mPop .28s ease both">
-    <h3 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:20px;margin:0 0 8px">{{ confirm.title }}</h3>
+    <h3 style="font-family:var(--font-head);font-weight:700;font-size:20px;margin:0 0 8px">{{ confirm.title }}</h3>
     <p style="margin:0 0 18px;color:var(--soft);font-size:15px">{{ confirm.body }}</p>
     <sc-if value="{{ confirm.hasSub }}" hint-placeholder-val="{{ false }}">
     <label style="display:flex;align-items:center;gap:11px;background:var(--surface2);border-radius:12px;padding:12px 14px;margin:0 0 20px;cursor:pointer;font-size:14px;font-weight:500;color:var(--ink)">
@@ -1629,27 +1710,51 @@
 </div>
 </sc-if>
 
+<!-- MODALE MEMBRI -->
+<sc-if value="{{ memberList }}" hint-placeholder-val="{{ false }}">
+<div onClick="{{ memberList.close }}" style="position:fixed;inset:0;z-index:90;background:rgba(15,10,5,.5);backdrop-filter:blur(3px);display:flex;align-items:flex-start;justify-content:center;padding:6vh 20px;animation:l2mFade .2s ease both">
+  <div onClick="{{ stop }}" style="background:var(--surface);border-radius:22px;padding:26px;max-width:460px;width:100%;max-height:82vh;overflow:auto;box-shadow:0 30px 60px -20px rgba(0,0,0,.6);animation:l2mPop .3s ease both">
+    <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:18px">
+      <div>
+        <h3 style="font-family:var(--font-head);font-weight:700;font-size:21px;margin:0">{{ memberList.title }}</h3>
+        <div style="color:var(--soft);font-size:14px;margin-top:3px">{{ memberList.subtitle }}</div>
+      </div>
+      <button onClick="{{ memberList.close }}" style="color:var(--soft);font-size:20px;line-height:1">✕</button>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:8px">
+      <sc-for list="{{ memberList.members }}" as="m" hint-placeholder-count="4">
+        <button onClick="{{ m.open }}" title="Vedi il profilo di {{ m.name }}" style="display:flex;align-items:center;gap:12px;background:none;padding:9px 10px;border-radius:12px;text-align:left;width:100%" style-hover="background:var(--surface2)">
+          <span style="width:38px;height:38px;border-radius:50%;flex-shrink:0;background:var(--violetSoft);color:var(--violet);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px">{{ m.init }}</span>
+          <span style="flex:1;min-width:0"><span style="display:block;font-weight:600;font-size:14.5px;color:var(--ink)">{{ m.name }}</span><span style="display:block;color:var(--soft);font-size:12.5px">{{ m.handle }}</span></span>
+          <sc-if value="{{ m.isAdmin }}" hint-placeholder-val="{{ false }}"><span style="font-size:11px;font-weight:700;text-transform:uppercase;padding:3px 9px;border-radius:999px;background:var(--violetSoft);color:var(--violet)">Admin</span></sc-if>
+        </button>
+      </sc-for>
+    </div>
+  </div>
+</div>
+</sc-if>
+
 <!-- PAGINA FOLLOWER / SEGUITI -->
 <sc-if value="{{ isPeopleList }}" hint-placeholder-val="{{ false }}">
 <div>
   <header style="position:sticky;top:0;z-index:30;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)">
     <div style="max-width:900px;margin:0 auto;padding:13px clamp(16px,4vw,40px);display:flex;align-items:center;gap:14px">
-      <button onClick="{{ peopleList.back }}" style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:23px;letter-spacing:-.02em;flex:1;text-align:left;color:var(--ink)">List<span style="color:var(--primary)">2</span>Me</button>
+      <button onClick="{{ peopleList.back }}" style="font-family:var(--font-head);font-weight:800;font-size:23px;letter-spacing:-.02em;flex:1;text-align:left;color:var(--ink)">List<span style="color:var(--primary)">2</span>Me</button>
       <button onClick="{{ toggleTheme }}" style="width:38px;height:38px;border-radius:50%;border:1px solid var(--line);background:var(--surface);color:var(--ink);font-size:16px">{{ themeIcon }}</button>
     </div>
   </header>
   <main style="max-width:900px;margin:0 auto;padding:clamp(22px,4vw,40px) clamp(16px,4vw,40px) 80px">
     <button onClick="{{ peopleList.back }}" style="color:var(--soft);font-size:14px;font-weight:600;margin-bottom:18px">← Indietro</button>
     <div style="margin-bottom:22px">
-      <h1 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:clamp(24px,3.4vw,32px);letter-spacing:-.02em;margin:0">{{ peopleList.title }}</h1>
+      <h1 style="font-family:var(--font-head);font-weight:800;font-size:clamp(24px,3.4vw,32px);letter-spacing:-.02em;margin:0">{{ peopleList.title }}</h1>
       <div style="color:var(--soft);font-size:15px;margin-top:4px">{{ peopleList.subtitle }}</div>
     </div>
     <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:14px">
       <sc-for list="{{ peopleList.people }}" as="p" hint-placeholder-count="8">
         <div style="display:flex;flex-direction:column;background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:18px">
           <div style="display:flex;align-items:flex-start;gap:13px">
-            <button onClick="{{ p.open }}" title="Vedi il profilo di {{ p.name }}" style="width:52px;height:52px;border-radius:50%;flex-shrink:0;background:var(--violetSoft);color:var(--violet);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:18px;font-family:'Bricolage Grotesque',sans-serif;padding:0;cursor:pointer">{{ p.init }}</button>
-            <button onClick="{{ p.open }}" title="Vedi il profilo di {{ p.name }}" style="flex:1;min-width:0;text-align:left;background:none;padding:0;cursor:pointer" style-hover="opacity:.75"><span style="display:block;font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:17px;letter-spacing:-.01em;color:var(--ink);overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ p.name }}</span><span style="display:block;color:var(--soft);font-size:13.5px">@{{ p.handle }}</span></button>
+            <button onClick="{{ p.open }}" title="Vedi il profilo di {{ p.name }}" style="width:52px;height:52px;border-radius:50%;flex-shrink:0;background:var(--violetSoft);color:var(--violet);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:18px;font-family:var(--font-head);padding:0;cursor:pointer">{{ p.init }}</button>
+            <button onClick="{{ p.open }}" title="Vedi il profilo di {{ p.name }}" style="flex:1;min-width:0;text-align:left;background:none;padding:0;cursor:pointer" style-hover="opacity:.75"><span style="display:block;font-family:var(--font-head);font-weight:700;font-size:17px;letter-spacing:-.01em;color:var(--ink);overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ p.name }}</span><span style="display:block;color:var(--soft);font-size:13.5px">@{{ p.handle }}</span></button>
           </div>
           <sc-if value="{{ p.hasBio }}" hint-placeholder-val="{{ true }}">
             <p style="margin:12px 0 0;color:var(--ink);font-size:14px;line-height:1.5;text-wrap:pretty">{{ p.bio }}</p>
@@ -1674,34 +1779,12 @@
 </div>
 </sc-if>
 
-<!-- MODALE SUGGERISCI LISTA -->
-<sc-if value="{{ suggest }}" hint-placeholder-val="{{ false }}">
-<div onClick="{{ closeSuggest }}" style="position:fixed;inset:0;z-index:90;background:rgba(15,10,5,.5);backdrop-filter:blur(3px);display:flex;align-items:flex-start;justify-content:center;padding:6vh 20px;overflow:auto;animation:l2mFade .2s ease both">
-  <div onClick="{{ stop }}" style="background:var(--surface);border-radius:22px;padding:26px;max-width:460px;width:100%;box-shadow:0 30px 60px -20px rgba(0,0,0,.6);animation:l2mPop .3s ease both">
-    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px">
-      <h3 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:22px;margin:0">Suggerisci la lista</h3>
-      <button onClick="{{ closeSuggest }}" style="color:var(--soft);font-size:20px;line-height:1">✕</button>
-    </div>
-    <p style="margin:0 0 16px;color:var(--soft);font-size:14.5px">Puoi suggerirla solo alle persone che hanno <strong style="color:var(--ink)">già accesso</strong> a questa lista.</p>
-    <div style="display:flex;flex-direction:column;gap:8px">
-      <sc-for list="{{ accessUsers }}" as="u" hint-placeholder-count="3">
-        <div style="display:flex;align-items:center;gap:12px;background:var(--surface2);border-radius:13px;padding:11px 13px">
-          <span style="width:38px;height:38px;border-radius:50%;flex-shrink:0;background:var(--violetSoft);color:var(--violet);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px">{{ u.init }}</span>
-          <div style="flex:1;min-width:0"><div style="font-weight:600;font-size:14.5px">{{ u.name }}</div><div style="color:var(--soft);font-size:12.5px">{{ u.reason }}</div></div>
-          <button onClick="{{ u.suggest }}" style="background:var(--primary);color:#fff;font-weight:600;font-size:13.5px;padding:8px 14px;border-radius:9px;flex-shrink:0">Suggerisci</button>
-        </div>
-      </sc-for>
-    </div>
-  </div>
-</div>
-</sc-if>
-
 <!-- MODALE COPIA IN UN'ALTRA LISTA -->
 <sc-if value="{{ copyTo }}" hint-placeholder-val="{{ false }}">
 <div onClick="{{ copyTo.close }}" style="position:fixed;inset:0;z-index:90;background:rgba(15,10,5,.5);backdrop-filter:blur(3px);display:flex;align-items:flex-start;justify-content:center;padding:6vh 20px;overflow:auto;animation:l2mFade .2s ease both">
   <div onClick="{{ stop }}" style="background:var(--surface);border-radius:22px;padding:26px;max-width:480px;width:100%;box-shadow:0 30px 60px -20px rgba(0,0,0,.6);animation:l2mPop .3s ease both">
     <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px">
-      <h3 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:22px;margin:0">Copia in un'altra lista</h3>
+      <h3 style="font-family:var(--font-head);font-weight:700;font-size:22px;margin:0">Copia in un'altra lista</h3>
       <button onClick="{{ copyTo.close }}" style="color:var(--soft);font-size:20px;line-height:1">✕</button>
     </div>
     <p style="margin:0 0 16px;color:var(--soft);font-size:14.5px">Scegli in quale lista copiare <strong style="color:var(--ink)">“{{ copyTo.itemText }}”</strong>. Vedi solo le liste in cui hai <strong style="color:var(--ink)">accesso in scrittura</strong>.</p>
@@ -1709,7 +1792,7 @@
     <div style="display:flex;flex-direction:column;gap:8px;max-height:320px;overflow:auto">
       <sc-for list="{{ copyTo.lists }}" as="l" hint-placeholder-count="3">
         <button onClick="{{ l.sel }}" style="display:flex;align-items:center;gap:12px;text-align:left;background:{{ l.bg }};border:1.5px solid {{ l.border }};border-radius:13px;padding:11px 13px;transition:border-color .15s,background .15s">
-          <span style="width:38px;height:38px;border-radius:10px;flex-shrink:0;background:var(--primarySoft);color:var(--primary);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:15px;font-family:'Bricolage Grotesque',sans-serif">{{ l.initial }}</span>
+          <span style="width:38px;height:38px;border-radius:10px;flex-shrink:0;background:var(--primarySoft);color:var(--primary);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:15px;font-family:var(--font-head)">{{ l.initial }}</span>
           <div style="flex:1;min-width:0"><div style="font-weight:700;font-size:14.5px;color:var(--ink);overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ l.title }}</div><div style="color:var(--soft);font-size:12.5px">{{ l.count }}</div></div>
           <span style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.03em;padding:3px 9px;border-radius:999px;background:{{ l.tagBg }};color:{{ l.tagFg }};flex-shrink:0">{{ l.permTag }}</span>
           <sc-if value="{{ l.selected }}" hint-placeholder-val="{{ false }}"><span style="color:var(--primary);font-weight:800;flex-shrink:0;font-size:15px">✓</span></sc-if>
@@ -1731,14 +1814,34 @@
 <div onClick="{{ closeShare }}" style="position:fixed;inset:0;z-index:90;background:rgba(15,10,5,.5);backdrop-filter:blur(3px);display:flex;align-items:flex-start;justify-content:center;padding:6vh 20px;overflow:auto;animation:l2mFade .2s ease both">
   <div onClick="{{ stop }}" style="background:var(--surface);border-radius:22px;padding:26px;max-width:460px;width:100%;box-shadow:0 30px 60px -20px rgba(0,0,0,.6);animation:l2mPop .3s ease both">
     <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px">
-      <h3 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:22px;margin:0">Condividi la lista</h3>
+      <h3 style="font-family:var(--font-head);font-weight:700;font-size:22px;margin:0">Condividi la lista</h3>
       <button onClick="{{ closeShare }}" style="color:var(--soft);font-size:20px;line-height:1">✕</button>
     </div>
-    <p style="margin:0 0 18px;color:var(--soft);font-size:14.5px">Diffondi <strong style="color:var(--ink)">{{ active.title }}</strong> sui tuoi canali.</p>
+    <p style="margin:0 0 16px;color:var(--soft);font-size:14px;line-height:1.55">Condividere una lista significa darne accesso a qualcuno. Se <strong style="color:var(--ink)">non cambi il suo livello di accesso</strong>, per quella persona la lista compare tra i <span style="color:var(--violet);font-weight:700">Suggerimenti</span>. Se le concedi <strong style="color:var(--ink)">lettura</strong> o <strong style="color:var(--ink)">modifica</strong>, diventa una lista <span style="color:var(--primary);font-weight:700">Condivisa</span>. Stessa azione, un solo pulsante.</p>
+    <div style="display:flex;gap:8px;margin-bottom:14px">
+      <input placeholder="Aggiungi persona: username o email…" style="flex:1;padding:10px 14px;border-radius:10px;border:1px solid var(--line);background:var(--surface2);color:var(--ink);outline:none;font-size:14px"/>
+      <button onClick="{{ demoAction }}" style="background:var(--primary);color:#fff;font-weight:600;padding:10px 16px;border-radius:10px;font-size:14px;flex-shrink:0">Aggiungi</button>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:9px;margin-bottom:22px">
+      <sc-for list="{{ sharePeople }}" as="u" hint-placeholder-count="3">
+        <div style="background:var(--surface2);border-radius:14px;padding:12px 13px">
+          <div style="display:flex;align-items:center;gap:11px;margin-bottom:10px">
+            <span style="width:36px;height:36px;border-radius:50%;flex-shrink:0;background:var(--violetSoft);color:var(--violet);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px">{{ u.init }}</span>
+            <div style="flex:1;min-width:0"><div style="font-weight:600;font-size:14.5px">{{ u.name }}</div><div style="font-size:12.5px;font-weight:600;color:{{ u.effectColor }}">{{ u.effect }}</div></div>
+          </div>
+          <div style="display:flex;gap:6px">
+            <sc-for list="{{ u.segs }}" as="sg" hint-placeholder-count="3">
+              <button onClick="{{ sg.set }}" style="flex:1;font-size:13px;font-weight:600;padding:8px 4px;border-radius:9px;background:{{ sg.bg }};color:{{ sg.fg }};border:1px solid var(--line)">{{ sg.label }}</button>
+            </sc-for>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px"><span style="height:1px;flex:1;background:var(--line)"></span><span style="font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--soft)">Oppure condividi con un link</span><span style="height:1px;flex:1;background:var(--line)"></span></div>
     <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(96px,1fr));gap:10px;margin-bottom:18px">
       <sc-for list="{{ socials }}" as="s" hint-placeholder-count="6">
         <button onClick="{{ s.go }}" style="display:flex;flex-direction:column;align-items:center;gap:8px;background:var(--surface2);border:1px solid var(--line);border-radius:14px;padding:14px 8px;font-weight:600;font-size:13px;color:var(--ink)" style-hover="border-color:var(--primary)">
-          <span style="width:38px;height:38px;border-radius:50%;background:{{ s.bg }};color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:16px">{{ s.icon }}</span>
+          <span style="width:38px;height:38px;border-radius:50%;background:{{ s.bg }};color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--font-head);font-weight:800;font-size:16px">{{ s.icon }}</span>
           {{ s.label }}
         </button>
       </sc-for>
@@ -1780,7 +1883,7 @@
     <div style="display:flex;flex-direction:column;gap:14px">
       <div>
         <div style="display:flex;align-items:center;gap:8px;margin-bottom:5px"><label style="font-size:11px;font-weight:700;color:var(--soft);text-transform:uppercase;letter-spacing:.04em">Titolo</label><sc-if value="{{ peekItem.mText }}" hint-placeholder-val="{{ false }}"><span title="Campo inserito o modificato manualmente" style="font-size:9.5px;font-weight:700;letter-spacing:.03em;text-transform:uppercase;color:var(--gold);background:color-mix(in srgb,var(--gold) 16%,transparent);padding:2px 7px;border-radius:6px;white-space:nowrap">✎ manuale</span></sc-if></div>
-        <input value="{{ peekItem.text }}" onChange="{{ peekItem.setText }}" readOnly="{{ peekItem.ro }}" placeholder="Titolo dell'elemento" style="width:100%;padding:10px 13px;border-radius:11px;border:1px solid var(--line);background:var(--bg);color:var(--ink);font-size:15.5px;font-weight:600;font-family:'Bricolage Grotesque',sans-serif;outline:none"/>
+        <input value="{{ peekItem.text }}" onChange="{{ peekItem.setText }}" readOnly="{{ peekItem.ro }}" placeholder="Titolo dell'elemento" style="width:100%;padding:10px 13px;border-radius:11px;border:1px solid var(--line);background:var(--bg);color:var(--ink);font-size:15.5px;font-weight:600;font-family:var(--font-head);outline:none"/>
       </div>
       <div>
         <div style="display:flex;align-items:center;gap:8px;margin-bottom:5px"><label style="font-size:11px;font-weight:700;color:var(--soft);text-transform:uppercase;letter-spacing:.04em">Descrizione</label><sc-if value="{{ peekItem.mDetail }}" hint-placeholder-val="{{ false }}"><span title="Campo inserito o modificato manualmente" style="font-size:9.5px;font-weight:700;letter-spacing:.03em;text-transform:uppercase;color:var(--gold);background:color-mix(in srgb,var(--gold) 16%,transparent);padding:2px 7px;border-radius:6px;white-space:nowrap">✎ manuale</span></sc-if></div>
@@ -1830,7 +1933,7 @@
 <div onClick="{{ newList.close }}" style="position:fixed;inset:0;z-index:90;background:rgba(15,10,5,.5);backdrop-filter:blur(3px);display:flex;align-items:flex-start;justify-content:center;padding:5vh 20px;overflow:auto;animation:l2mFade .2s ease both">
   <div onClick="{{ stop }}" style="background:var(--surface);border-radius:22px;padding:26px;max-width:560px;width:100%;box-shadow:0 30px 60px -20px rgba(0,0,0,.6);animation:l2mPop .3s ease both">
     <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px">
-      <h3 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:22px;margin:0">Nuova lista</h3>
+      <h3 style="font-family:var(--font-head);font-weight:700;font-size:22px;margin:0">Nuova lista</h3>
       <button onClick="{{ newList.close }}" style="color:var(--soft);font-size:20px;line-height:1">✕</button>
     </div>
     <div style="display:flex;flex-direction:column;gap:14px">
@@ -1912,7 +2015,7 @@
 <div onClick="{{ newGroup.close }}" style="position:fixed;inset:0;z-index:90;background:rgba(15,10,5,.5);backdrop-filter:blur(3px);display:flex;align-items:flex-start;justify-content:center;padding:6vh 20px;overflow:auto;animation:l2mFade .2s ease both">
   <div onClick="{{ stop }}" style="background:var(--surface);border-radius:22px;padding:26px;max-width:500px;width:100%;box-shadow:0 30px 60px -20px rgba(0,0,0,.6);animation:l2mPop .3s ease both">
     <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px">
-      <h3 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:22px;margin:0">Nuovo gruppo</h3>
+      <h3 style="font-family:var(--font-head);font-weight:700;font-size:22px;margin:0">Nuovo gruppo</h3>
       <button onClick="{{ newGroup.close }}" style="color:var(--soft);font-size:20px;line-height:1">✕</button>
     </div>
     <div style="display:flex;flex-direction:column;gap:14px">
@@ -1942,7 +2045,7 @@
 <div onClick="{{ editCover.close }}" style="position:fixed;inset:0;z-index:90;background:rgba(15,10,5,.5);backdrop-filter:blur(3px);display:flex;align-items:flex-start;justify-content:center;padding:5vh 20px;overflow:auto;animation:l2mFade .2s ease both">
   <div onClick="{{ stop }}" style="background:var(--surface);border-radius:22px;padding:26px;max-width:560px;width:100%;box-shadow:0 30px 60px -20px rgba(0,0,0,.6);animation:l2mPop .3s ease both">
     <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px">
-      <h3 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:22px;margin:0">Copertina e colore</h3>
+      <h3 style="font-family:var(--font-head);font-weight:700;font-size:22px;margin:0">Copertina e colore</h3>
       <button onClick="{{ editCover.close }}" style="color:var(--soft);font-size:20px;line-height:1">✕</button>
     </div>
     <div style="height:110px;border-radius:14px;margin-bottom:16px;background:repeating-linear-gradient(135deg,var(--surface2),var(--surface2) 9px,var(--line) 9px,var(--line) 10px);display:flex;align-items:flex-end;padding:11px">
@@ -1983,7 +2086,7 @@
 <div onClick="{{ closeAdd }}" style="position:fixed;inset:0;z-index:90;background:rgba(15,10,5,.5);backdrop-filter:blur(3px);display:flex;align-items:flex-start;justify-content:center;padding:5vh 20px;overflow:auto;animation:l2mFade .2s ease both">
   <div onClick="{{ stop }}" style="background:var(--surface);border-radius:22px;padding:26px;max-width:560px;width:100%;box-shadow:0 30px 60px -20px rgba(0,0,0,.6);animation:l2mPop .3s ease both">
     <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px">
-      <h3 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:22px;margin:0">{{ addItem.title }}</h3>
+      <h3 style="font-family:var(--font-head);font-weight:700;font-size:22px;margin:0">{{ addItem.title }}</h3>
       <button onClick="{{ closeAdd }}" style="color:var(--soft);font-size:20px;line-height:1">✕</button>
     </div>
 
@@ -1992,11 +2095,11 @@
       <p style="margin:0 0 16px;color:var(--soft);font-size:14.5px">Scegli il tipo di elemento. I tipi arricchiti pre-compilano dati e immagine da un servizio esterno.</p>
       <p style="margin:0 0 8px;font-size:12px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--soft)">Generici</p>
       <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:8px;margin-bottom:18px">
-        <sc-for list="{{ genericTypes }}" as="ty" hint-placeholder-count="4"><button onClick="{{ ty.pick }}" style="display:flex;align-items:center;gap:10px;text-align:left;background:var(--surface2);border:1px solid transparent;border-radius:12px;padding:11px" style-hover="border-color:var(--primary)"><span style="width:34px;height:34px;border-radius:9px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:13px;background:var(--surface);color:{{ ty.iconC }}">{{ ty.icon }}</span><span style="min-width:0"><span style="display:block;font-weight:600;font-size:14px">{{ ty.label }}</span><span style="display:block;color:var(--soft);font-size:12px">{{ ty.src }}</span></span></button></sc-for>
+        <sc-for list="{{ genericTypes }}" as="ty" hint-placeholder-count="4"><button onClick="{{ ty.pick }}" style="display:flex;align-items:center;gap:10px;text-align:left;background:var(--surface2);border:1px solid transparent;border-radius:12px;padding:11px" style-hover="border-color:var(--primary)"><span style="width:34px;height:34px;border-radius:9px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-family:var(--font-head);font-weight:800;font-size:13px;background:var(--surface);color:{{ ty.iconC }}">{{ ty.icon }}</span><span style="min-width:0"><span style="display:block;font-weight:600;font-size:14px">{{ ty.label }}</span><span style="display:block;color:var(--soft);font-size:12px">{{ ty.src }}</span></span></button></sc-for>
       </div>
       <p style="margin:0 0 8px;font-size:12px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--soft)">Arricchiti da fonti esterne</p>
       <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:8px">
-        <sc-for list="{{ enrichedTypes }}" as="ty" hint-placeholder-count="8"><button onClick="{{ ty.pick }}" style="display:flex;align-items:center;gap:10px;text-align:left;background:var(--surface2);border:1px solid transparent;border-radius:12px;padding:11px" style-hover="border-color:var(--primary)"><span style="width:34px;height:34px;border-radius:9px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:13px;background:var(--surface);color:{{ ty.iconC }}">{{ ty.icon }}</span><span style="min-width:0"><span style="display:block;font-weight:600;font-size:14px">{{ ty.label }}</span><span style="display:block;color:var(--primary);font-size:12px">{{ ty.src }}</span></span></button></sc-for>
+        <sc-for list="{{ enrichedTypes }}" as="ty" hint-placeholder-count="8"><button onClick="{{ ty.pick }}" style="display:flex;align-items:center;gap:10px;text-align:left;background:var(--surface2);border:1px solid transparent;border-radius:12px;padding:11px" style-hover="border-color:var(--primary)"><span style="width:34px;height:34px;border-radius:9px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-family:var(--font-head);font-weight:800;font-size:13px;background:var(--surface);color:{{ ty.iconC }}">{{ ty.icon }}</span><span style="min-width:0"><span style="display:block;font-weight:600;font-size:14px">{{ ty.label }}</span><span style="display:block;color:var(--primary);font-size:12px">{{ ty.src }}</span></span></button></sc-for>
       </div>
     </div>
     </sc-if>
@@ -2044,17 +2147,17 @@
 <script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:&quot;100%&quot;,&quot;height&quot;:900},&quot;accent&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;#5d8aa8&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;options&quot;:[&quot;#5d8aa8&quot;,&quot;#f79256&quot;,&quot;#0e8a90&quot;,&quot;#0a2239&quot;],&quot;section&quot;:&quot;Aspetto&quot;,&quot;label&quot;:&quot;Colore d'accento&quot;},&quot;startView&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;default&quot;:&quot;dashboard&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;options&quot;:[&quot;dashboard&quot;,&quot;lists&quot;,&quot;groups&quot;,&quot;users&quot;],&quot;section&quot;:&quot;Comportamento&quot;,&quot;label&quot;:&quot;Schermata iniziale&quot;},&quot;showFeedDetail&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Comportamento&quot;,&quot;label&quot;:&quot;Dettagli nel feed&quot;}}">
 class Component extends DCLogic {
   state = {
-    view: 'dashboard', activeListId: 'l1', theme: 'light', detailTab: 'items', itemsView: 'list',
+    view: 'dashboard', activeListId: 'l1', theme: 'light', detailTab: 'items', itemsView: 'list', paletteId: 'default', fontId: 'default', uiScale: 'md',
     expanded: {}, followedUsers: { u2: true }, followedLists: {},
     listQuery: '', userQuery: '', topQuery: '', adminFilter: 'all',
     toasts: [], confirm: null, addItem: null, lists: null, copyTo: null,
-    sugStatus: {}, accountStatus: {}, accountAdmin: {}, followRev: 0,
+    sugStatus: {}, shareAccess: {}, accountStatus: {}, accountAdmin: {}, followRev: 0,
     dragId: null, overId: null, authView: 'login',
     authed: false, authScreen: false, guestView: 'landing', guestListIndex: 0, publicShown: 12,
     listVotes: {}, itemVotes: {}, exploreShown: 9, newList: null, editCover: null, coverOverrides: {}, accentOverrides: {},
     favorites: {}, archived: {}, showArchived: false, favTags: {}, listTagFilter: null,
     listsView: 'grid', mapKinds: [], mapTags: [], mapTypes: [], mapFrom: '', mapTo: '', mapQuery: '',
-    groupsData: null, newGroup: null, activeGroupId: null,
+    groupsData: null, newGroup: null, activeGroupId: null, memberList: null,
     exploreQuery: '', exploreTags: [], exploreSize: 'all',
     detailTagInput: '',
     profileUser: null, pubQuery: '', pubTag: null, pubSort: 'pop', guestListObj: null,
@@ -2347,10 +2450,30 @@ class Component extends DCLogic {
   }
   stub(n) { return Array.from({ length: n }, (_, i) => ({ id: 's' + i, type: 'testo', text: 'Elemento ' + (i + 1) })); }
 
+  palettes() {
+    return {
+      default: { label: 'Blu notte', note: 'La palette predefinita di List2Me.', swatch: ['#5d8aa8', '#f79256', '#0e8a90', '#c98a3c'],
+        light: { primary: '#5d8aa8', primarySoft: '#dfeaf1', violet: '#f79256', violetSoft: '#fde6d4', teal: '#0e8a90', gold: '#c98a3c' },
+        dark:  { primary: '#7aa6c2', primarySoft: '#173a54', violet: '#f79256', violetSoft: '#3d2718', teal: '#97f9f9', gold: '#fbd1a2' } },
+      daltonici: { label: 'Alto contrasto (daltonici)', note: 'Colori distinguibili con qualsiasi tipo di daltonismo (palette Okabe–Ito).', swatch: ['#0072b2', '#d55e00', '#009e73', '#e69f00'],
+        light: { primary: '#0072b2', primarySoft: '#d5e8f2', violet: '#d55e00', violetSoft: '#f7e0d1', teal: '#009e73', gold: '#e69f00' },
+        dark:  { primary: '#56b4e9', primarySoft: '#123247', violet: '#e69f00', violetSoft: '#3a2c12', teal: '#009e73', gold: '#f0e442' } },
+      foresta: { label: 'Foresta', note: 'Verdi caldi, riposante per gli occhi.', swatch: ['#3f7d4e', '#c07b3c', '#2f8f83', '#b98a2e'],
+        light: { primary: '#3f7d4e', primarySoft: '#dcece0', violet: '#c07b3c', violetSoft: '#f3e6d5', teal: '#2f8f83', gold: '#b98a2e' },
+        dark:  { primary: '#7fb88c', primarySoft: '#183a26', violet: '#e0a05a', violetSoft: '#33280f', teal: '#8fe0d3', gold: '#e6c98a' } },
+      ametista: { label: 'Ametista', note: 'Viola e magenta, tono creativo.', swatch: ['#7a5ca8', '#c05c8a', '#3f8f9a', '#c98a3c'],
+        light: { primary: '#7a5ca8', primarySoft: '#e7dff2', violet: '#c05c8a', violetSoft: '#f3dced', teal: '#3f8f9a', gold: '#c98a3c' },
+        dark:  { primary: '#b19bd8', primarySoft: '#2a2340', violet: '#e08ab0', violetSoft: '#3a2130', teal: '#8fd6de', gold: '#e6c98a' } }
+    };
+  }
   colors() {
-    const base = this.state.theme === 'dark'
-      ? { bg: '#0a2239', surface: '#0f2c46', surface2: '#173a54', ink: '#eaf2f8', soft: '#8ba7bd', line: '#22455f', primary: '#7aa6c2', primarySoft: '#173a54', violet: '#f79256', violetSoft: '#3d2718', teal: '#97f9f9', gold: '#fbd1a2' }
-      : { bg: '#f3f7fa', surface: '#ffffff', surface2: '#e7eef3', ink: '#0a2239', soft: '#5d7488', line: '#d7e1e9', primary: '#5d8aa8', primarySoft: '#dfeaf1', violet: '#f79256', violetSoft: '#fde6d4', teal: '#0e8a90', gold: '#c98a3c' };
+    const dark = this.state.theme === 'dark';
+    const neutral = dark
+      ? { bg: '#0a2239', surface: '#0f2c46', surface2: '#173a54', ink: '#eaf2f8', soft: '#8ba7bd', line: '#22455f' }
+      : { bg: '#f3f7fa', surface: '#ffffff', surface2: '#e7eef3', ink: '#0a2239', soft: '#5d7488', line: '#d7e1e9' };
+    const PAL = this.palettes();
+    const p = PAL[this.state.paletteId] || PAL.default;
+    const base = Object.assign({}, neutral, dark ? p.dark : p.light);
     if (this.props.accent) base.primary = this.props.accent;
     return base;
   }
@@ -2938,7 +3061,15 @@ class Component extends DCLogic {
       ['Luca Marino', 'lucam', 'Membro di Cineforum del giovedì'],
       ['Elena Conti', 'elenac', 'Membro di Cineforum del giovedì']
     ];
-    const accessUsers = accessDefs.map(([name, user, reason]) => ({ name, user, reason, init: this.init(name), suggest: () => { this.setState({ suggest: null }); this.toast('Lista suggerita a ' + name, 'success'); } }));
+    const shareBaseline = { 'marco.b': 'edit', 'sofiag': 'view', 'lucam': 'suggest', 'elenac': 'suggest' };
+    const segMeta = [['suggest', 'Suggerimento'], ['view', 'Lettura'], ['edit', 'Modifica']];
+    const sharePeople = accessDefs.map(([name, user, reason]) => {
+      const lvl = (S.shareAccess && S.shareAccess[user]) || shareBaseline[user] || 'suggest';
+      const setLvl = (k) => { this.setState(s => ({ shareAccess: Object.assign({}, s.shareAccess, { [user]: k }) })); this.toast(k === 'suggest' ? 'Suggerita a ' + name + ' · accesso invariato' : 'Condivisa con ' + name + (k === 'edit' ? ' in modifica' : ' in lettura'), 'success'); };
+      const segs = segMeta.map(([k, label]) => { const on = lvl === k; return { key: k, label, on, bg: on ? (k === 'suggest' ? 'var(--violet)' : 'var(--primary)') : 'var(--surface2)', fg: on ? '#fff' : 'var(--soft)', set: () => setLvl(k) }; });
+      const effect = lvl === 'suggest' ? 'Suggerimento · accesso invariato' : (lvl === 'edit' ? 'Condivisa · può modificare' : 'Condivisa · può leggere');
+      return { name, user, reason, init: this.init(name), segs, effect, effectColor: lvl === 'suggest' ? 'var(--violet)' : 'var(--primary)' };
+    });
     const permPair = p => p === 'edit' ? ['var(--primarySoft)', 'var(--primary)'] : ['var(--surface2)', 'var(--soft)'];
     const shares = [['Marco Bianchi', 'marco.b', 'edit'], ['Sofia Greco', 'sofiag', 'view']].map(([name, user, perm]) => { const [pb, pf] = permPair(perm); return { name, user, perm, pb, pf, init: this.init(name) }; });
     const groupShares = [['Cineforum del giovedì', 12, 'view']].map(([name, members, perm]) => { const [pb, pf] = permPair(perm); return { name, members, perm, pb, pf }; });
@@ -3031,11 +3162,19 @@ class Component extends DCLogic {
     })();
     const newGroupOk = !!(S.newGroup && (S.newGroup.name || '').trim().length > 0);
     const invDefs = [['in1', 'Vinili & Co.', 'Davide Riva', 9], ['in2', 'Trekking Appennino', 'Sara Neri', 16]];
-    const invites = invDefs.map(([id, name, from, members]) => ({
-      name, from, members,
-      accept: () => this.toast('Sei entrato in “' + name + '”', 'success'),
-      reject: () => this.toast('Invito rifiutato', 'info')
-    }));
+    const invites = invDefs.map(([id, name, from, members]) => {
+      const pool = this.peoplePool().filter(n => n !== from);
+      const start = this.hashNum(id) % pool.length;
+      const names = [from];
+      for (let i = 0; names.length < members && i < pool.length * 2; i++) { const p = pool[(start + i) % pool.length]; if (!names.includes(p)) names.push(p); }
+      return {
+        name, from, members,
+        openFrom: () => this.openUser(from),
+        openMembers: () => { window.scrollTo(0, 0); this.setState({ memberList: { title: name, subtitle: members + ' membri', names, admin: from } }); },
+        accept: () => this.toast('Sei entrato in “' + name + '”', 'success'),
+        reject: () => this.toast('Invito rifiutato', 'info')
+      };
+    });
 
     // users
     const uq = S.userQuery.trim().toLowerCase();
@@ -3294,8 +3433,42 @@ class Component extends DCLogic {
       mapBg: onLv('map').bg, mapFg: onLv('map').fg, mapSh: onLv('map').sh
     };
 
+    const FONTMAP = {
+      default:   { label: 'Predefinito',      head: "'Bricolage Grotesque',sans-serif", body: "'Instrument Sans',system-ui,sans-serif", note: 'Bricolage Grotesque + Instrument Sans' },
+      leggibile: { label: 'Alta leggibilità', head: "'Atkinson Hyperlegible',sans-serif", body: "'Atkinson Hyperlegible',sans-serif", note: 'Consigliato per dislessia e ipovisione' },
+      serif:     { label: 'Serif',            head: "'Lora',Georgia,serif", body: "'Lora',Georgia,serif", note: 'Lora — tono editoriale' },
+      sistema:   { label: 'Sistema',          head: "system-ui,sans-serif", body: "system-ui,-apple-system,sans-serif", note: 'Il font del tuo dispositivo' }
+    };
+    const fid = S.fontId || 'default';
+    const fontHead = (FONTMAP[fid] || FONTMAP.default).head, fontBody = (FONTMAP[fid] || FONTMAP.default).body;
+    const SIZEMAP = { sm: { label: 'Piccola', zoom: '0.9' }, md: { label: 'Media', zoom: '1' }, lg: { label: 'Grande', zoom: '1.12' }, xl: { label: 'Molto grande', zoom: '1.25' } };
+    const sid = S.uiScale || 'md';
+    const uiZoom = (SIZEMAP[sid] || SIZEMAP.md).zoom;
+    const PALS = this.palettes();
+    const curPal = S.paletteId || 'default';
+    const setPalettes = Object.keys(PALS).map(id => ({
+      id, label: PALS[id].label, note: PALS[id].note || '', swatch: PALS[id].swatch,
+      active: curPal === id, bd: curPal === id ? 'var(--primary)' : 'var(--line)',
+      bg: curPal === id ? 'var(--primarySoft)' : 'var(--surface)', mark: curPal === id ? '✓' : '',
+      select: () => { this.setState({ paletteId: id }); this.toast('Palette: ' + PALS[id].label, 'info'); }
+    }));
+    const setFonts = Object.keys(FONTMAP).map(id => ({
+      id, label: FONTMAP[id].label, note: FONTMAP[id].note || '', sampleFont: FONTMAP[id].head,
+      active: fid === id, bd: fid === id ? 'var(--primary)' : 'var(--line)',
+      bg: fid === id ? 'var(--primarySoft)' : 'var(--surface)',
+      select: () => { this.setState({ fontId: id }); this.toast('Font: ' + FONTMAP[id].label, 'info'); }
+    }));
+    const seg = (activeVal, id) => ({ active: activeVal === id, bd: activeVal === id ? 'var(--primary)' : 'var(--line)', fg: activeVal === id ? 'var(--primary)' : 'var(--ink)', bg: activeVal === id ? 'var(--primarySoft)' : 'transparent' });
+    const setSizes = Object.keys(SIZEMAP).map(id => Object.assign({ id, label: SIZEMAP[id].label, select: () => this.setState({ uiScale: id }) }, seg(sid, id)));
+    const themeOpts = [['light', 'Chiaro', '☀'], ['dark', 'Scuro', '☾']].map(([id, label, icon]) => Object.assign({ id, label, icon, select: () => this.setState({ theme: id }) }, seg(S.theme, id)));
+    const listViewOpts = [['grid', 'Griglia'], ['compact', 'Compatta'], ['map', 'Mappa']].map(([id, label]) => Object.assign({ id, label, select: () => this.setState({ listsView: id }) }, seg(S.listsView || 'grid', id)));
+    const itemViewOpts = [['list', 'Elenco'], ['grid', 'Griglia'], ['compact', 'Compatta'], ['map', 'Mappa']].map(([id, label]) => Object.assign({ id, label, select: () => this.setState({ itemsView: id }) }, seg(S.itemsView || 'list', id)));
+
     return {
       c, me, navTree, isApp: S.authed && !S.peopleList, showAuth: !S.authed && S.authScreen && !S.peopleList,
+      fontHead, fontBody, uiZoom, isSettings: S.view === 'settings',
+      goSettings: nav('settings'), menuGoSettings: () => { this.setState({ accountMenuOpen: false }); nav('settings')(); },
+      setPalettes, setFonts, setSizes, themeOpts, listViewOpts, itemViewOpts,
       privacyRows, previewPersonas, preview,
       deskNav: !S.isMobile, isMobile: S.isMobile,
       mobileMenuOpen: S.isMobile && S.mobileNavOpen,
@@ -3430,7 +3603,7 @@ class Component extends DCLogic {
       newListDisabled: !(S.newList && (S.newList.title || '').trim().length > 0),
       newListBtnBg: (S.newList && (S.newList.title || '').trim().length > 0) ? 'var(--primary)' : 'var(--soft)',
       newListBtnOp: (S.newList && (S.newList.title || '').trim().length > 0) ? '1' : '.55',
-      active: { cover: coverOf(al.id), title: al.title, desc: al.desc, canEdit, coverCursor: canEdit ? 'pointer' : 'default', coverTitle: canEdit ? 'Clicca per cambiare la copertina' : '', openCover: canEdit ? () => this.openEditCover(al.id, coverOf(al.id)) : () => {}, tags: al.tags || [], version: al.version, forks: 3, isFork: !!al.forkOf, forkFrom: al.forkOf, visLabel: avl, visBg: avb, visFg: avf, ownerName: al.owner, ownerInit: this.init(al.owner), openOwner: () => this.openUser(al.owner), ownerTitle: al.owner === 'Giulia Ferretti' ? 'Vai al tuo profilo' : 'Vedi il profilo di ' + al.owner, prov: (() => { if (al.suggested && al.suggestedBy) { const n = al.suggestedBy; return { show: true, verb: 'Suggerita da', name: n, init: this.init(n), avRadius: '50%', go: () => this.openUser(n), title: 'Vedi il profilo di ' + n, bg: 'var(--violetSoft)', fg: 'var(--violet)' }; } if (al.shared && al.sharedBy) { const n = al.sharedBy; return { show: true, verb: 'Condivisa da', name: n, init: this.init(n), avRadius: '50%', go: () => this.openUser(n), title: 'Vedi il profilo di ' + n, bg: 'var(--primarySoft)', fg: 'var(--primary)' }; } return { show: false, verb: '', name: '', init: '', avRadius: '50%', go: () => {}, title: '', bg: '', fg: '' }; })(), isChildOf: lists.some(p => p.id !== al.id && (p.items || []).some(it => it.child === al.id)), parentOf: lists.filter(p => p.id !== al.id && (p.items || []).some(it => it.child === al.id)).map(p => ({ title: p.title, go: () => this.open(p.id) })), groups: (S.groupsData || this.groupSeed()).filter(g => (g.lists || []).includes(al.title)).map(g => ({ name: g.name, go: () => this.openGroup(g.id) })), hasGroups: (S.groupsData || this.groupSeed()).some(g => (g.lists || []).includes(al.title)), count: (al.items || []).length, followers: al.followers, items, readOnlyTags: !canEdit, tagChips: (al.tags || []).map(t => ({ label: t, remove: () => { this.updateActive(l => Object.assign({}, l, { tags: (l.tags || []).filter(x => x !== t) })); this.toast('Tag rimosso', 'info'); } })), tagInput: S.detailTagInput, onTagInput: e => this.setState({ detailTagInput: e.target.value }), onTagKey: e => { if (e.key === 'Enter' || e.key === ',') { e.preventDefault(); const v = (S.detailTagInput || '').trim().toLowerCase().replace(/^#/, ''); if (v && !(al.tags || []).includes(v)) { this.updateActive(l => Object.assign({}, l, { tags: [...(l.tags || []), v] })); this.toast('Tag aggiunto', 'success'); } this.setState({ detailTagInput: '' }); } }, tagMostUsed: mostUsedTagList.filter(t => !(al.tags || []).includes(t)).map(t => ({ label: t, add: () => { this.updateActive(l => Object.assign({}, l, { tags: [...(l.tags || []), t] })); this.toast('Tag aggiunto', 'success'); } })), hasMostUsed: canEdit && mostUsedTagList.some(t => !(al.tags || []).includes(t)), tagSuggestions: ['viaggi', 'film', 'libri', 'musica', 'cibo', 'gaming', 'wishlist', 'natura', 'arte', 'serietv'].filter(t => !(al.tags || []).includes(t) && !mostUsedTagList.includes(t)).map(t => ({ label: t, add: () => { this.updateActive(l => Object.assign({}, l, { tags: [...(l.tags || []), t] })); this.toast('Tag aggiunto', 'success'); } })), hasTagSuggestions: canEdit && ['viaggi', 'film', 'libri', 'musica', 'cibo', 'gaming', 'wishlist', 'natura', 'arte', 'serietv'].some(t => !(al.tags || []).includes(t) && !mostUsedTagList.includes(t)) },
+      active: { cover: coverOf(al.id), title: al.title, desc: al.desc, canEdit, coverCursor: canEdit ? 'pointer' : 'default', coverTitle: canEdit ? 'Clicca per cambiare la copertina' : '', openCover: canEdit ? () => this.openEditCover(al.id, coverOf(al.id)) : () => {}, tags: al.tags || [], version: al.version, forks: 3, isFork: !!al.forkOf, forkFrom: al.forkOf, visLabel: avl, visBg: avb, visFg: avf, editVis: editMode, readVis: !editMode, visValue: al.visibility || 'private', visOpts: [{ key: 'private', label: 'Privata' }, { key: 'group', label: 'Di gruppo' }, { key: 'public', label: 'Pubblica' }], setVisibility: (e) => { const v = e.target.value; this.updateActive(l => Object.assign({}, l, { visibility: v })); this.toast('Visibilità aggiornata: ' + this.visMeta(v)[0], 'success'); }, ownerName: al.owner, ownerInit: this.init(al.owner), openOwner: () => this.openUser(al.owner), ownerTitle: al.owner === 'Giulia Ferretti' ? 'Vai al tuo profilo' : 'Vedi il profilo di ' + al.owner, prov: (() => { if (al.suggested && al.suggestedBy) { const n = al.suggestedBy; return { show: true, verb: 'Suggerita da', name: n, init: this.init(n), avRadius: '50%', go: () => this.openUser(n), title: 'Vedi il profilo di ' + n, bg: 'var(--violetSoft)', fg: 'var(--violet)' }; } if (al.shared && al.sharedBy) { const n = al.sharedBy; return { show: true, verb: 'Condivisa da', name: n, init: this.init(n), avRadius: '50%', go: () => this.openUser(n), title: 'Vedi il profilo di ' + n, bg: 'var(--primarySoft)', fg: 'var(--primary)' }; } return { show: false, verb: '', name: '', init: '', avRadius: '50%', go: () => {}, title: '', bg: '', fg: '' }; })(), isChildOf: lists.some(p => p.id !== al.id && (p.items || []).some(it => it.child === al.id)), parentOf: lists.filter(p => p.id !== al.id && (p.items || []).some(it => it.child === al.id)).map(p => ({ title: p.title, go: () => this.open(p.id) })), groups: (S.groupsData || this.groupSeed()).filter(g => (g.lists || []).includes(al.title)).map(g => ({ name: g.name, go: () => this.openGroup(g.id) })), hasGroups: (S.groupsData || this.groupSeed()).some(g => (g.lists || []).includes(al.title)), count: (al.items || []).length, followers: al.followers, items, readOnlyTags: !canEdit, tagChips: (al.tags || []).map(t => ({ label: t, remove: () => { this.updateActive(l => Object.assign({}, l, { tags: (l.tags || []).filter(x => x !== t) })); this.toast('Tag rimosso', 'info'); } })), tagInput: S.detailTagInput, onTagInput: e => this.setState({ detailTagInput: e.target.value }), onTagKey: e => { if (e.key === 'Enter' || e.key === ',') { e.preventDefault(); const v = (S.detailTagInput || '').trim().toLowerCase().replace(/^#/, ''); if (v && !(al.tags || []).includes(v)) { this.updateActive(l => Object.assign({}, l, { tags: [...(l.tags || []), v] })); this.toast('Tag aggiunto', 'success'); } this.setState({ detailTagInput: '' }); } }, tagMostUsed: mostUsedTagList.filter(t => !(al.tags || []).includes(t)).map(t => ({ label: t, add: () => { this.updateActive(l => Object.assign({}, l, { tags: [...(l.tags || []), t] })); this.toast('Tag aggiunto', 'success'); } })), hasMostUsed: canEdit && mostUsedTagList.some(t => !(al.tags || []).includes(t)), tagSuggestions: ['viaggi', 'film', 'libri', 'musica', 'cibo', 'gaming', 'wishlist', 'natura', 'arte', 'serietv'].filter(t => !(al.tags || []).includes(t) && !mostUsedTagList.includes(t)).map(t => ({ label: t, add: () => { this.updateActive(l => Object.assign({}, l, { tags: [...(l.tags || []), t] })); this.toast('Tag aggiunto', 'success'); } })), hasTagSuggestions: canEdit && ['viaggi', 'film', 'libri', 'musica', 'cibo', 'gaming', 'wishlist', 'natura', 'arte', 'serietv'].some(t => !(al.tags || []).includes(t) && !mostUsedTagList.includes(t)) },
       editCover: (() => {
         const ec = S.editCover; if (!ec) return null;
         const q = (ec.query || '').trim().toLowerCase();
@@ -3463,7 +3636,7 @@ class Component extends DCLogic {
       followBtn: followingList ? { label: '✓ Segui', bg: 'var(--violetSoft)', fg: 'var(--violet)', bd: 'var(--violet)' } : { label: '+ Segui lista', bg: 'var(--surface)', fg: 'var(--ink)', bd: 'var(--line)' },
       toggleFollowList: () => { this.setState(s => ({ followedLists: Object.assign({}, s.followedLists, { [al.id]: !s.followedLists[al.id] }) })); this.toast(followingList ? 'Non segui più la lista' : 'Ora segui la lista', followingList ? 'info' : 'success'); },
       forkList: () => this.toast('Fork creato tra le tue liste', 'success'),
-      suggest: S.suggest, accessUsers,
+      sharePeople,
       copyTo: (() => {
         const cp = S.copyTo; if (!cp) return null;
         const dests = lists.filter(l => (l.mine || l.sharedPerm === 'edit') && l.id !== cp.fromId).map(l => {
@@ -3490,8 +3663,6 @@ class Component extends DCLogic {
           confirm: () => this.confirmCopy()
         };
       })(),
-      openSuggest: () => this.setState({ suggest: {} }),
-      closeSuggest: () => this.setState({ suggest: null }),
       share: S.share, shareUrl,
       descTitle: canEdit ? 'Clicca per modificare la descrizione' : 'Sola lettura',
       titleTitle: canEdit ? 'Clicca per modificare il titolo' : 'Sola lettura',
@@ -3550,6 +3721,17 @@ class Component extends DCLogic {
       toasts: S.toasts,
       confirm: S.confirm, closeConfirm: () => { const c = S.confirm && S.confirm.onCancel; this.setState({ confirm: null }); if (c) c(); }, doConfirm: () => { const o = S.confirm && S.confirm.onOk; this.setState({ confirm: null }); if (o) o(); }, stop: e => e.stopPropagation(),
       isPeopleList: !!S.peopleList,
+      memberList: (() => {
+        const ml = S.memberList; if (!ml) return null;
+        return {
+          title: ml.title, subtitle: ml.subtitle,
+          members: ml.names.map(name => {
+            const meta = this.personMeta(name);
+            return { name, init: this.init(name), handle: '@' + meta.handle, isAdmin: name === ml.admin, open: () => { this.setState({ memberList: null }); this.openUser(name); } };
+          }),
+          close: () => this.setState({ memberList: null })
+        };
+      })(),
       peopleList: (() => {
         const pl = S.peopleList; if (!pl) return null;
         const title = (pl.kind === 'following' ? 'Persone seguite da ' : 'Follower di ') + pl.profileName;
